@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
@@ -41,10 +40,29 @@ const ProductDetailPage: React.FC = () => {
     if (product) {
         const productName = getProductName(product);
         const productDesc = getProductDesc(product);
+        const categoryName = t(product.Category);
         const canonicalUrl = window.location.href;
 
-        document.title = `${productName} | Birlik Company`;
-        document.querySelector('meta[name="description"]')?.setAttribute('content', productDesc);
+        let title: string;
+        let description: string;
+
+        switch(language) {
+            case 'en':
+                title = `${productName} | ${categoryName} in Mersin, Turkey`;
+                description = `Buy ${productName} in Mersin, Turkey. ${productDesc}. High quality from Birlik Company.`;
+                break;
+            case 'ar':
+                title = `${productName} | ${categoryName} في مرسين، تركيا`;
+                description = `اشترِ ${productName} في مرسين، تركيا. ${productDesc}. جودة عالية من شركة بيرليك.`;
+                break;
+            default: // tr
+                title = `${productName} | ${categoryName} Mersin, Türkiye`;
+                description = `Mersin, Türkiye'de ${productName} satın alın. ${productDesc}. Birlik Company kalitesiyle.`;
+                break;
+        }
+
+        document.title = title;
+        document.querySelector('meta[name="description"]')?.setAttribute('content', description);
 
         const existingCanonical = document.querySelector('link[rel="canonical"]');
         if (existingCanonical) {
@@ -79,6 +97,10 @@ const ProductDetailPage: React.FC = () => {
                         "url": window.location.href,
                         "priceCurrency": "TRY",
                         "availability": product.Stock_Status === 'in_stock' ? "https://schema.org/InStock" : "https://schema.org/PreOrder",
+                        "areaServed": {
+                            "@type": "Place",
+                            "name": "Mersin"
+                        },
                         "seller": {
                             "@type": "Organization",
                             "name": "Birlik Company"
@@ -118,6 +140,19 @@ const ProductDetailPage: React.FC = () => {
       </div>
     );
   }
+  
+  const handleWhatsAppClick = () => {
+    // Analytics Event: whatsapp_click
+    const eventData = {
+      sku: product.SKU,
+      product_name_tr: product.Name_TR,
+      lang: language,
+      page_url: window.location.href,
+    };
+    console.log('Analytics Event: whatsapp_click', eventData);
+    // In a real app, you would send this to your analytics service
+    // e.g., window.gtag('event', 'whatsapp_click', eventData);
+  };
 
   const generateWhatsAppLink = () => {
     let message = '';
@@ -210,11 +245,12 @@ const ProductDetailPage: React.FC = () => {
           <div className="mt-8">
             <a 
               href={generateWhatsAppLink()}
+              onClick={handleWhatsAppClick}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full bg-green-500 text-white font-bold py-3 px-6 rounded-lg flex items-center justify-center hover:bg-green-600 transition-colors duration-200 shadow"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="mr-3"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zM12.04 20.12c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31c-.82-1.31-1.26-2.82-1.26-4.38 0-4.54 3.68-8.22 8.22-8.22 2.22 0 4.29.86 5.81 2.38 1.52 1.52 2.38 3.59 2.38 5.82-.01 4.54-3.69 8.22-8.23 8.22zm4.32-5.11c-.24-.12-1.42-.7-1.64-.78-.23-.08-.39-.12-.56.12-.17.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2s-1.5-1.74-1.68-2.04-.03-.28.09-.39c.11-.11.24-.28.37-.42.12-.14.16-.24.24-.4.08-.16.04-.32-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.55-.42-.15 0-.31-.02-.48-.02s-.43.06-.66.3c-.22.24-.86.84-.86 2.07s.88 2.4 1 2.56c.12.16 1.73 2.64 4.2 3.72 2.46 1.08 2.46.72 2.9.7.44-.02 1.42-.58 1.62-1.14.2-.56.2-1.04.14-1.14-.06-.11-.22-.18-.46-.3z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="currentColor" className="mr-3"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zM12.04 20.12c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31c-.82-1.31-1.26-2.82-1.26-4.38 0-4.54 3.68-8.22 8.22-8.22 2.22 0 4.29.86 5.81 2.38 1.52 1.52 2.38 3.59 2.38 5.82-.01 4.54-3.69 8.22-8.23 8.22zm4.32-5.11c-.24-.12-1.42-.7-1.64-.78-.23-.08-.39-.12-.56.12-.17.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2s-1.5-1.74-1.68-2.04-.03-.28.09-.39c.11-.11.24-.28.37-.42.12-.14.16-.24.24-.4.08-.16.04-.32-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.55-.42-.15 0-.31-.02-.48-.02s-.43.06-.66.3c-.22.24-.86.84-.86 2.07s.88 2.4 1 2.56c.12.16 1.73 2.64 4.2 3.72 2.46 1.08 2.46.72 2.9.7.44-.02 1.42-.58 1.62-1.14.2-.56.2-1.04.14-1.14-.06-.11-.22-.18-.46-.3z"/></svg>
               {t('getQuoteOnWhatsApp')}
             </a>
           </div>

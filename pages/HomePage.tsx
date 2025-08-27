@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
@@ -262,8 +261,17 @@ const HomePage: React.FC = () => {
   const categories = Object.values(ProductCategory);
 
   useEffect(() => {
-    const title = `Birlik Company | ${t('heroTitle')}`;
-    const description = t('heroSubtitle');
+    let title = 'Birlik Company | PS Lambri & PVC Mermer Panel - Mersin';
+    let description = 'Birlik Company, Mersin, Türkiye\'de lider dekorasyon malzemeleri tedarikçinizdir. PS duvar lambirileri, PVC mermer levhalar, PS süpürgelikler, duvar çıtaları ve poliüretan motifler gibi geniş ürün yelpazemizi keşfedin.';
+    
+    if (language === 'en') {
+        title = 'Birlik Company | PS Fluted & PVC Marble Panels - Mersin, Turkey';
+        description = 'Birlik Company is your leading supplier of decorative materials in Mersin, Turkey. Explore our wide range of products including PS fluted panels, PVC marble sheets, PS baseboards, wall moldings, and polyurethane motifs.';
+    } else if (language === 'ar') {
+        title = 'شركة بيرليك | بديل الخشب وبديل الرخام - مرسين، تركيا';
+        description = 'شركة بيرليك هي موردك الرائد لمواد الديكور في مرسين، تركيا. اكتشف مجموعتنا الواسعة من المنتجات بما في ذلك بديل الخشب، بديل الرخام، نعلات فوم، إطارات فوم، والزخارف البولي يوريثان.';
+    }
+
     const canonicalUrl = window.location.href;
 
     document.title = title;

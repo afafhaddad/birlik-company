@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { COMPANY_INFO } from '../constants';
@@ -21,8 +20,17 @@ const ContactPage: React.FC = () => {
   const whatsappUrl = `https://wa.me/${COMPANY_INFO.whatsappNumber}?text=${encodeURIComponent(t('whatsappConsultationMessage'))}`;
 
   useEffect(() => {
-    const title = `${t('contact')} | Birlik Company`;
-    const description = t('contactIntro');
+    let title = 'Birlik Company İletişim | Mersin Dekorasyon Malzemeleri';
+    let description = 'Birlik Company ile iletişime geçin. Mersin, Türkiye\'deki PS duvar lambirileri, PVC mermer levhalar, süpürgelikler, duvar çıtaları ve poliüretan motifler hakkında bilgi ve teklif alın.';
+    
+    if(language === 'en') {
+        title = 'Contact Birlik Company | Decoration Materials in Mersin, Turkey';
+        description = 'Contact Birlik Company for information and quotes on our full range of products in Mersin, Turkey: PS fluted panels, PVC marble sheets, baseboards, wall moldings, and polyurethane motifs.';
+    } else if (language === 'ar') {
+        title = 'اتصل بشركة بيرليك | مواد ديكور في مرسين، تركيا';
+        description = 'تواصل مع شركة بيرليك في مرسين، تركيا للحصول على معلومات وعروض أسعار حول مجموعتنا الكاملة من المنتجات: بديل الخشب، بديل الرخام، نعلات فوم، إطارات فوم، والزخارف البولي يوريثان.';
+    }
+    
     const canonicalUrl = window.location.href;
 
     document.title = title;

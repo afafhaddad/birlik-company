@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
@@ -18,9 +17,25 @@ const ProductListPage: React.FC = () => {
   
   useEffect(() => {
     if (categoryName) {
-      const title = `${categoryName} | Birlik Company`;
-      const description = `${t('exploreProducts')} ${categoryName}. High-quality, durable, and aesthetic solutions for interior design.`;
+      let title: string;
+      let description: string;
       const canonicalUrl = window.location.href;
+      
+      switch(language) {
+          case 'en':
+              title = `${categoryName} for Sale in Mersin, Turkey | Birlik Company`;
+              description = `Explore the best ${categoryName} in Mersin, Turkey. Birlik Company offers modern, durable, and aesthetic solutions for your interior design needs.`;
+              break;
+          case 'ar':
+              title = `أسعار ${categoryName} في مرسين، تركيا | شركة بيرليك`;
+              description = `اكتشف أفضل أنواع ${categoryName} في مرسين، تركيا. تقدم شركة بيرليك حلولاً عصرية ومتينة وجمالية لتلبية احتياجات التصميم الداخلي لديك.`;
+              break;
+          default: // tr
+              title = `${categoryName} Fiyatları Mersin, Türkiye | Birlik Company`;
+              description = `Mersin, Türkiye'deki en iyi ${categoryName} çeşitlerini keşfedin. Birlik Company, modern ve dayanıklı dekorasyon çözümleri sunar.`;
+              break;
+      }
+
 
       document.title = title;
       document.querySelector('meta[name="description"]')?.setAttribute('content', description);
