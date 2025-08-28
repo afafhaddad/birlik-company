@@ -1,5 +1,5 @@
 
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { ProductCategory, Product } from '../types';
 import { products } from '../data/products';
@@ -21,6 +21,117 @@ const quickCalcCategories: ProductCategory[] = [
   ProductCategory.PS_BASEBOARD,
   ProductCategory.PS_MOLDING,
 ];
+
+// Custom Product Select Component with Thumbnails
+interface ProductSelectProps {
+  value: string;
+  onChange: (sku: string) => void;
+  groupedProducts: Record<ProductCategory, Product[]>;
+  placeholder: string;
+  getProductName: (product: Product) => string;
+  t: (key: string) => string;
+}
+
+const ProductSelect: React.FC<ProductSelectProps> = ({ value, onChange, groupedProducts, placeholder, getProductName, t }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const selectRef = useRef<HTMLDivElement>(null);
+
+  const selectedProduct = useMemo(() => products.find(p => p.SKU === value), [value]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (selectRef.current && !selectRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+  
+  const filteredProducts = useMemo(() => {
+      if (!searchTerm) {
+          return groupedProducts;
+      }
+      const lowercasedTerm = searchTerm.toLowerCase();
+      const filtered: Record<string, Product[]> = {};
+
+      for (const category in groupedProducts) {
+          const matchingProducts = groupedProducts[category as ProductCategory].filter(
+              product => getProductName(product).toLowerCase().includes(lowercasedTerm) || product.SKU.toLowerCase().includes(lowercasedTerm)
+          );
+          if (matchingProducts.length > 0) {
+              filtered[category as ProductCategory] = matchingProducts;
+          }
+      }
+      return filtered;
+  }, [searchTerm, groupedProducts, getProductName]);
+
+  const handleSelect = (sku: string) => {
+    onChange(sku);
+    setIsOpen(false);
+    setSearchTerm('');
+  };
+
+  return (
+    <div className="relative mt-2" ref={selectRef}>
+      <button
+        type="button"
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full p-2 border border-gray-300 rounded-md bg-white text-left flex items-center justify-between"
+        aria-haspopup="listbox"
+        aria-expanded={isOpen}
+      >
+        {selectedProduct ? (
+          <div className="flex items-center gap-2 overflow-hidden">
+            <img src={selectedProduct.images[0]} alt={getProductName(selectedProduct)} className="w-8 h-8 object-cover rounded flex-shrink-0" />
+            <span className="text-sm truncate">{getProductName(selectedProduct)}</span>
+          </div>
+        ) : (
+          <span className="text-gray-500">{placeholder}</span>
+        )}
+        <svg xmlns="http://www.w3.org/2000/svg" className={`h-5 w-5 text-gray-400 transition-transform flex-shrink-0 ${isOpen ? 'rotate-180' : ''}`} viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
+      </button>
+
+      {isOpen && (
+        <div className="absolute top-full mt-1 w-full bg-white border border-gray-300 rounded-md shadow-lg z-10">
+          <div className="p-2 border-b">
+            <input
+              type="text"
+              placeholder={t('searchProducts')}
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full p-2 border border-gray-300 rounded-md"
+              autoFocus
+            />
+          </div>
+          <ul className="max-h-60 overflow-y-auto" role="listbox">
+            {Object.keys(filteredProducts).length > 0 ? Object.entries(filteredProducts).map(([category, productList]) => (
+              <li key={category}>
+                <div className="px-3 py-1 font-bold text-xs text-gray-500 bg-gray-100 sticky top-0">{t(category)}</div>
+                <ul>
+                  {productList.map(product => (
+                    <li key={product.SKU} role="option" aria-selected={value === product.SKU}>
+                      <button
+                        type="button"
+                        onClick={() => handleSelect(product.SKU)}
+                        className="w-full text-left p-2 hover:bg-birlik-accent-sand/50 flex items-center gap-2"
+                      >
+                        <img src={product.images[0]} alt={getProductName(product)} className="w-8 h-8 object-cover rounded flex-shrink-0" />
+                        <span className="text-sm">{getProductName(product)}</span>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            )) : <li className="p-3 text-sm text-gray-500 text-center">{t('noResults')}</li>}
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+};
+
 
 const CalculatorPage: React.FC = () => {
   const { t, language } = useLanguage();
@@ -274,20 +385,18 @@ const CalculatorPage: React.FC = () => {
                     <div key={item.id} className="bg-white p-4 rounded-lg shadow-md border border-gray-200 transition-all duration-300">
                     <div className="flex justify-between items-start gap-4">
                         <div className="flex-grow">
-                        <input type="text" placeholder={t('wallAreaName')} value={item.name} onChange={e => handleItemChange(item.id, 'name', e.target.value)} className="w-full p-2 border border-gray-300 rounded-md mb-2 font-semibold bg-white text-birlik-neutral-charcoal placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-birlik-primary focus:border-transparent" />
-                        <select value={item.sku} onChange={e => handleItemChange(item.id, 'sku', e.target.value)} className="w-full p-2 border rounded-md bg-gray-50">
-                            <option value="">{t('selectProduct')}</option>
-                            {Object.entries(groupedProducts).map(([category, productList]) => (
-                            <optgroup key={category} label={t(category as ProductCategory)}>
-                                {productList.map(p => (
-                                <option key={p.SKU} value={p.SKU}>{getProductName(p)}</option>
-                                ))}
-                            </optgroup>
-                            ))}
-                        </select>
-                        {renderInputs(item)}
+                          <input type="text" placeholder={t('wallAreaName')} value={item.name} onChange={e => handleItemChange(item.id, 'name', e.target.value)} className="w-full p-2 border border-gray-300 rounded-md font-semibold bg-white text-birlik-neutral-charcoal placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-birlik-primary focus:border-transparent" />
+                          <ProductSelect 
+                            value={item.sku}
+                            onChange={(sku) => handleItemChange(item.id, 'sku', sku)}
+                            groupedProducts={groupedProducts}
+                            placeholder={t('selectProduct')}
+                            getProductName={getProductName}
+                            t={t}
+                          />
+                          {renderInputs(item)}
                         </div>
-                        <button onClick={() => handleRemoveItem(item.id)} className="text-red-500 hover:text-red-700 p-2 rounded-full hover:bg-red-100 transition-colors" aria-label={t('remove')}>
+                        <button onClick={() => handleRemoveItem(item.id)} className="text-red-500 hover:text-red-700 p-2 rounded-full hover:bg-red-100 transition-colors flex-shrink-0 mt-1" aria-label={t('remove')}>
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
                         </button>
                     </div>
@@ -315,12 +424,15 @@ const CalculatorPage: React.FC = () => {
                     <h2 className="text-xl font-bold text-birlik-primary mb-3 text-center">{t('projectSummary')}</h2>
                     {projectSummary.length > 0 ? (
                         <>
-                            <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                            <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                                 {projectSummary.map(({ product, quantity, unit }) => (
-                                    <div key={product.SKU} className="bg-birlik-neutral-offwhite p-3 rounded-md border border-birlik-accent-sand">
-                                        <p className="font-semibold text-sm truncate" title={getProductName(product)}>{getProductName(product)}</p>
-                                        <p className="text-gray-500 text-xs">SKU: {product.SKU}</p>
-                                        <p className="text-birlik-primary font-bold text-lg mt-1">{`${t('totalRequired')}: ${quantity} ${unit}`}</p>
+                                    <div key={product.SKU} className="bg-birlik-neutral-offwhite p-3 rounded-md border border-birlik-accent-sand flex items-center gap-3">
+                                        <img src={product.images[0]} alt={getProductName(product)} className="w-16 h-16 object-cover rounded-md flex-shrink-0" />
+                                        <div className="overflow-hidden">
+                                            <p className="font-semibold text-sm truncate" title={getProductName(product)}>{getProductName(product)}</p>
+                                            <p className="text-gray-500 text-xs">SKU: {product.SKU}</p>
+                                            <p className="text-birlik-primary font-bold text-lg mt-1">{`${t('totalRequired')}: ${quantity} ${unit}`}</p>
+                                        </div>
                                     </div>
                                 ))}
                             </div>
