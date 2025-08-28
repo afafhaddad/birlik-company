@@ -269,7 +269,7 @@ const HomePage: React.FC = () => {
         description = 'Birlik Company is your leading supplier of decorative materials in Mersin, Turkey. Explore our wide range of products including PS fluted panels, PVC marble sheets, PS baseboards, wall moldings, and polyurethane motifs.';
     } else if (language === 'ar') {
         title = 'شركة بيرليك | بديل الخشب وبديل الرخام - مرسين، تركيا';
-        description = 'شركة بيرليك هي موردك الرائد لمواد الديكور في مرسين، تركيا. اكتشف مجموعتنا الواسعة من المنتجات بما في ذلك بديل الخشب، بديل الرخام، نعلات فوم، إطارات فوم، والزخارف البولي يوريثان.';
+        description = 'شركة بيرليك هي موردك الرائد لمواد الديكور في مرسين، تركيا. اكتشف مجموعتنا الواسعة من المنتجات بما في ذلك بديل الخشب، بديل الرخام، نعلات بوليمر، إطارات بوليمر، والزخارف البولي يوريثان.';
     }
 
     const canonicalUrl = window.location.href;
@@ -296,7 +296,7 @@ const HomePage: React.FC = () => {
                 "@type": "Organization",
                 "name": "Birlik Company",
                 "url": window.location.origin,
-                "logo": "https://res.cloudinary.com/dsqrdreft/image/upload/v1756297555/logo_uej7ab.svg",
+                "logo": "https://res.cloudinary.com/dsqrdreft/image/upload/v1756297554/logo_yritwt.png",
                 "contactPoint": {
                     "@type": "ContactPoint",
                     "telephone": COMPANY_INFO.phone,

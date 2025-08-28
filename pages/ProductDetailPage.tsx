@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { products } from '../data/products';
 import { COMPANY_INFO } from '../constants';
-import BackButton from '../components/BackButton';
+import Breadcrumbs from '../components/Breadcrumbs';
 import ProductCalculator from '../components/ProductCalculator';
 
 const ProductDetailPage: React.FC = () => {
@@ -178,7 +178,7 @@ const ProductDetailPage: React.FC = () => {
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <BackButton to={getCategoryLink()} />
+      <Breadcrumbs />
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         {/* Product Gallery */}
         <div className="w-full">

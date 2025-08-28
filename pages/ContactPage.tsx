@@ -28,7 +28,7 @@ const ContactPage: React.FC = () => {
         description = 'Contact Birlik Company for information and quotes on our full range of products in Mersin, Turkey: PS fluted panels, PVC marble sheets, baseboards, wall moldings, and polyurethane motifs.';
     } else if (language === 'ar') {
         title = 'اتصل بشركة بيرليك | مواد ديكور في مرسين، تركيا';
-        description = 'تواصل مع شركة بيرليك في مرسين، تركيا للحصول على معلومات وعروض أسعار حول مجموعتنا الكاملة من المنتجات: بديل الخشب، بديل الرخام، نعلات فوم، إطارات فوم، والزخارف البولي يوريثان.';
+        description = 'تواصل مع شركة بيرليك في مرسين، تركيا للحصول على معلومات وعروض أسعار حول مجموعتنا الكاملة من المنتجات: بديل الخشب، بديل الرخام، نعلات بوليمر، إطارات بوليمر، والزخارف البولي يوريثان.';
     }
     
     const canonicalUrl = window.location.href;
@@ -52,7 +52,7 @@ const ContactPage: React.FC = () => {
         "@type": "Organization",
         "name": "Birlik Company",
         "url": window.location.origin,
-        "logo": "https://res.cloudinary.com/dsqrdreft/image/upload/v1756297555/logo_uej7ab.svg",
+        "logo": "https://res.cloudinary.com/dsqrdreft/image/upload/v1756297554/logo_yritwt.png",
         "contactPoint": {
             "@type": "ContactPoint",
             "telephone": COMPANY_INFO.phone,

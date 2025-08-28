@@ -5,7 +5,7 @@ import { products } from '../data/products';
 import { Product, ProductCategory } from '../types';
 import { translations } from '../constants';
 import ProductCard from '../components/ProductCard';
-import BackButton from '../components/BackButton';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 const ProductListPage: React.FC = () => {
   const { categorySlug } = useParams<{ categorySlug: string }>();
@@ -91,7 +91,7 @@ const ProductListPage: React.FC = () => {
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <BackButton />
+      <Breadcrumbs />
       <h1 className="text-3xl md:text-4xl font-bold mb-8 text-birlik-primary">{categoryName}</h1>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {filteredProducts.map(product => (
