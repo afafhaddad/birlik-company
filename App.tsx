@@ -8,6 +8,7 @@ import ProductListPage from './pages/ProductListPage';
 import ProductDetailPage from './pages/ProductDetailPage';
 import CalculatorPage from './pages/CalculatorPage';
 import ContactPage from './pages/ContactPage';
+import Analytics from './components/Analytics';
 
 const HomeHandler: React.FC = () => {
   const { language } = useLanguage();
@@ -25,6 +26,7 @@ function App() {
   return (
     <LanguageProvider>
       <HashRouter>
+        <Analytics />
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<HomeHandler />} />

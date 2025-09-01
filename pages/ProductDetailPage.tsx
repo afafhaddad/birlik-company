@@ -143,15 +143,15 @@ const ProductDetailPage: React.FC = () => {
   
   const handleWhatsAppClick = () => {
     // Analytics Event: whatsapp_click
-    const eventData = {
-      sku: product.SKU,
-      product_name_tr: product.Name_TR,
-      lang: language,
-      page_url: window.location.href,
-    };
-    console.log('Analytics Event: whatsapp_click', eventData);
-    // In a real app, you would send this to your analytics service
-    // e.g., window.gtag('event', 'whatsapp_click', eventData);
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'whatsapp_quote_click', {
+        event_category: 'engagement',
+        event_label: `Product: ${product.SKU}`,
+        product_sku: product.SKU,
+        product_name: getProductName(),
+        language: language,
+      });
+    }
   };
 
   const generateWhatsAppLink = () => {
