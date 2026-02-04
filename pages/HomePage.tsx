@@ -105,7 +105,7 @@ const AtmosphericBackground: React.FC<{ blurAmount?: string; opacity?: string; g
             <div className={`absolute inset-0 grid ${gridConfig} gap-1 ${opacity} scale-105`}>
                 {slots.map((_, i) => <CollageTile key={i} imageUrls={allImages} />)}
             </div>
-            <div className={`absolute inset-0 bg-birlik-primary/50 backdrop-blur-${blurAmount}`}></div>
+            <div className={`absolute inset-0 bg-birlik-primary/60 backdrop-blur-${blurAmount}`}></div>
         </div>
     );
 };
@@ -125,7 +125,7 @@ const RegionMap = () => {
         <div className="relative w-full max-w-6xl mx-auto h-[450px] md:h-[650px] group flex items-center justify-center mt-6">
             <div className="relative w-full h-full">
                 
-                {/* Localized Floating Header Text - High Contrast and Clear */}
+                {/* Localized Floating Header Text - Razor Sharp */}
                 <div className={`absolute top-0 pointer-events-none z-20 ${isAr ? 'right-0 md:right-4 text-right' : 'left-0 md:left-4 text-left'}`}>
                     <p className="text-4xl md:text-8xl font-black text-white/10 tracking-tighter leading-none mb-2">
                         {firstPart}
@@ -154,25 +154,25 @@ const RegionMap = () => {
                     
                     {/* Mersin (Headquarters) */}
                     <g transform="translate(480, 200)">
-                        <circle r="85" fill="url(#markerGlowPremium)" className="animate-pulse opacity-30" />
-                        <circle r="40" className="fill-birlik-accent-sand/10 animate-ping" />
-                        <circle r="18" className="fill-birlik-accent-sand shadow-2xl" />
+                        <circle r="90" fill="url(#markerGlowPremium)" className="animate-pulse opacity-30" />
+                        <circle r="45" className="fill-birlik-accent-sand/10 animate-ping" />
+                        <circle r="20" className="fill-birlik-accent-sand shadow-2xl" />
                         
-                        <g className="drop-shadow-[0_8px_16px_rgba(0,0,0,1)]">
-                            <text y="-75" x="0" textAnchor="middle" className="fill-white text-[42px] font-black uppercase tracking-[0.05em] select-none">MERSIN</text>
-                            <text y="-40" x="0" textAnchor="middle" className="fill-birlik-accent-sand text-[20px] uppercase tracking-[0.3em] font-extrabold select-none">{t('headquarters')}</text>
+                        <g className="drop-shadow-[0_4px_8px_rgba(0,0,0,1)]">
+                            <text y="-85" x="0" textAnchor="middle" className="fill-white text-[48px] font-black uppercase tracking-[0.05em] select-none">MERSIN</text>
+                            <text y="-45" x="0" textAnchor="middle" className="fill-birlik-accent-sand text-[22px] uppercase tracking-[0.3em] font-extrabold select-none">{t('headquarters')}</text>
                         </g>
                     </g>
                     
                     {/* Lattakia (Regional Hub) */}
                     <g transform="translate(850, 420)">
-                        <circle r="85" fill="url(#markerGlowPremium)" className="animate-pulse opacity-30" />
-                        <circle r="40" className="fill-birlik-accent-sand/10 animate-ping" />
-                        <circle r="18" className="fill-birlik-accent-sand shadow-2xl" />
+                        <circle r="90" fill="url(#markerGlowPremium)" className="animate-pulse opacity-30" />
+                        <circle r="45" className="fill-birlik-accent-sand/10 animate-ping" />
+                        <circle r="20" className="fill-birlik-accent-sand shadow-2xl" />
                         
-                        <g className="drop-shadow-[0_8px_16px_rgba(0,0,0,1)]">
-                            <text y="85" x="0" textAnchor="middle" className="fill-white text-[42px] font-black uppercase tracking-[0.05em] select-none">LATTAKIA</text>
-                            <text y="120" x="0" textAnchor="middle" className="fill-birlik-accent-sand text-[20px] uppercase tracking-[0.3em] font-extrabold select-none">{t('regionalHub')}</text>
+                        <g className="drop-shadow-[0_4px_8px_rgba(0,0,0,1)]">
+                            <text y="95" x="0" textAnchor="middle" className="fill-white text-[48px] font-black uppercase tracking-[0.05em] select-none">LATTAKIA</text>
+                            <text y="135" x="0" textAnchor="middle" className="fill-birlik-accent-sand text-[22px] uppercase tracking-[0.3em] font-extrabold select-none">{t('regionalHub')}</text>
                         </g>
                     </g>
                 </svg>
@@ -188,8 +188,8 @@ const HeroSection: React.FC = () => {
     const getCalculatorPath = () => language === 'tr' ? '/hesaplayici' : `/${language}/calculator`;
 
     return (
-        <div className="relative h-[90vh] min-h-[700px] flex items-center justify-center text-center overflow-hidden bg-birlik-primary">
-            <AtmosphericBackground blurAmount="[1px]" opacity="opacity-50" />
+        <div className="relative h-[95vh] min-h-[700px] flex items-center justify-center text-center overflow-hidden bg-birlik-primary">
+            <AtmosphericBackground blurAmount="[1px]" opacity="opacity-60" />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-birlik-primary"></div>
             
             <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
@@ -203,7 +203,7 @@ const HeroSection: React.FC = () => {
                         <span className="text-xs font-bold text-birlik-accent-sand uppercase tracking-[0.4em]">Premium Interior Solutions</span>
                     </div>
                 </div>
-                <h1 className="text-4xl md:text-7xl font-bold text-white drop-shadow-2xl mb-8 max-w-4xl mx-auto leading-tight">{t('heroTitle')}</h1>
+                <h1 className="text-4xl md:text-8xl font-bold text-white drop-shadow-2xl mb-8 max-w-5xl mx-auto leading-tight tracking-tighter">{t('heroTitle')}</h1>
                 <p className="max-w-2xl mx-auto text-lg md:text-2xl text-birlik-accent-sand/90 font-light drop-shadow-lg mb-12">{t('heroSubtitle')}</p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-5 w-full max-w-lg">
                     <Link to={getCalculatorPath()} className="w-full sm:w-auto bg-birlik-accent-sand text-birlik-primary font-black py-4 px-12 rounded-full shadow-2xl hover:bg-white transition-all duration-500 transform hover:scale-105 active:scale-95 uppercase tracking-widest text-sm">{t('calculateNeeds')}</Link>
@@ -217,28 +217,30 @@ const HeroSection: React.FC = () => {
 const MissionSection: React.FC = () => {
     const { t } = useLanguage();
     return (
-        <section className="relative bg-birlik-primary pt-24 pb-8 lg:pt-32 lg:pb-12 overflow-hidden border-t border-white/5">
+        <section className="relative bg-birlik-primary pt-24 pb-4 lg:pt-32 lg:pb-8 overflow-hidden border-t border-white/5">
             <AtmosphericBackground blurAmount="3xl" opacity="opacity-30" />
-            <div className="absolute inset-0 bg-gradient-to-b from-birlik-primary/90 via-birlik-primary to-birlik-primary"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-birlik-primary/90 via-birlik-primary/95 to-birlik-primary"></div>
             
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
                 <div className="max-w-5xl mx-auto flex flex-col items-center">
                     
-                    <div className="mb-10 animate-in fade-in slide-in-from-top-5 duration-1000 max-w-4xl">
+                    {/* Mission Text Body */}
+                    <div className="mb-12 animate-in fade-in slide-in-from-top-5 duration-1000 max-w-4xl">
                         <h2 className="text-5xl md:text-8xl font-extrabold text-white tracking-tighter leading-none mb-10 drop-shadow-xl">
                             {t('ourMission')}
                         </h2>
                         
                         <div className="max-w-3xl mx-auto px-4">
                             <div className="h-px w-24 bg-birlik-accent-sand/40 mx-auto mb-10"></div>
-                            <p className="text-birlik-accent-sand/90 text-xl md:text-3xl font-light leading-relaxed italic drop-shadow-sm">
+                            <p className="text-birlik-accent-sand/90 text-xl md:text-4xl font-light leading-relaxed italic drop-shadow-sm">
                                 {t('missionText')}
                             </p>
                         </div>
                     </div>
 
-                    <div className="inline-block px-6 py-2.5 bg-birlik-accent-sand/10 border border-birlik-accent-sand/20 rounded-full mb-6 backdrop-blur-md">
-                         <span className="text-xs md:text-sm font-black text-birlik-accent-sand tracking-[0.4em] uppercase">
+                    {/* Global Presence Badge - Anchoring the Map */}
+                    <div className="inline-block px-8 py-3 bg-birlik-accent-sand/10 border border-birlik-accent-sand/20 rounded-full mb-6 backdrop-blur-md">
+                         <span className="text-sm md:text-base font-black text-birlik-accent-sand tracking-[0.4em] uppercase">
                             {t('globalPresence')}
                          </span>
                     </div>
@@ -258,22 +260,22 @@ const CategoryTile: React.FC<{ category: ProductCategory; images: string[] }> = 
     return (
         <Link 
             to={getLink()} 
-            className="group relative block aspect-[4/5] sm:aspect-square md:aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl transition-all duration-700 hover:shadow-birlik-accent-sand/20"
+            className="group relative block aspect-[4/5] sm:aspect-square md:aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl transition-all duration-700 hover:shadow-birlik-accent-sand/30"
         >
-            <DynamicImageCycler imageUrls={images} className="brightness-75 group-hover:brightness-50 transition-all duration-700" />
+            <DynamicImageCycler imageUrls={images} className="brightness-75 group-hover:brightness-50 transition-all duration-1000" />
             <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
-                <div className="bg-black/20 backdrop-blur-xl border border-white/10 rounded-2xl p-6 transform transition-all duration-500 group-hover:-translate-y-2">
+                <div className="bg-black/40 backdrop-blur-2xl border border-white/20 rounded-3xl p-6 transform transition-all duration-700 group-hover:-translate-y-4">
                     <div className="flex items-center justify-between">
                         <div>
-                            <p className="text-[10px] font-black text-birlik-accent-sand uppercase tracking-[0.3em] mb-1 opacity-70">
+                            <p className="text-[10px] font-black text-birlik-accent-sand uppercase tracking-[0.3em] mb-1 opacity-80">
                                 {t('products')}
                             </p>
-                            <h3 className="text-xl md:text-2xl font-bold text-white leading-tight">
+                            <h3 className="text-2xl md:text-3xl font-bold text-white leading-tight">
                                 {categoryName}
                             </h3>
                         </div>
-                        <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white border border-white/20 group-hover:bg-birlik-accent-sand group-hover:text-birlik-primary transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7-7 7" /></svg>
+                        <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white border border-white/20 group-hover:bg-birlik-accent-sand group-hover:text-birlik-primary transition-all duration-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7-7 7" /></svg>
                         </div>
                     </div>
                 </div>
@@ -294,25 +296,25 @@ const CategoriesSection: React.FC = () => {
     }, [categories]);
 
     return (
-        <section id="categories" className="bg-birlik-primary pt-8 pb-20 lg:pt-12 lg:pb-24 relative overflow-hidden">
-            <AtmosphericBackground blurAmount="3xl" opacity="opacity-20" />
+        <section id="categories" className="bg-birlik-primary pt-12 pb-24 lg:pt-16 lg:pb-32 relative overflow-hidden">
+            <AtmosphericBackground blurAmount="3xl" opacity="opacity-40" />
             <div className="absolute inset-0 bg-gradient-to-b from-birlik-primary via-birlik-primary/95 to-birlik-primary"></div>
 
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-                    <div className="max-w-2xl">
-                        <div className="inline-flex items-center gap-3 px-4 py-1.5 bg-white/5 border border-white/10 rounded-full mb-6">
-                            <span className="w-2 h-2 rounded-full bg-birlik-accent-sand animate-pulse"></span>
-                            <span className="text-xs font-black text-birlik-accent-sand tracking-[0.3em] uppercase">{t('categories')}</span>
+                <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8 text-center md:text-left">
+                    <div className="max-w-2xl mx-auto md:mx-0">
+                        <div className="inline-flex items-center gap-3 px-6 py-2 bg-white/5 border border-white/10 rounded-full mb-6">
+                            <span className="w-2.5 h-2.5 rounded-full bg-birlik-accent-sand animate-pulse"></span>
+                            <span className="text-sm font-black text-birlik-accent-sand tracking-[0.3em] uppercase">{t('categories')}</span>
                         </div>
-                        <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight">{t('categories')}</h2>
+                        <h2 className="text-5xl md:text-8xl font-black text-white tracking-tighter leading-none">{t('categories')}</h2>
                     </div>
-                    <p className="text-birlik-accent-sand/60 max-w-sm text-lg italic leading-relaxed md:text-right">
+                    <p className="text-birlik-accent-sand/60 max-w-sm text-xl italic font-light leading-relaxed md:text-right">
                         {t('heroSubtitle')}
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
                     {categories.map(cat => (
                         <CategoryTile key={cat} category={cat} images={categoryImagePools[cat]} />
                     ))}
@@ -322,7 +324,77 @@ const CategoriesSection: React.FC = () => {
     );
 };
 
-// --- Best Sellers Section ---
+const PolymerFeaturesSection = () => {
+  const { t } = useLanguage();
+  const [ref, inView] = useInView({ threshold: 0.1 });
+  return (
+    <section ref={ref} className="relative bg-birlik-primary py-24 lg:py-32 overflow-hidden border-t border-white/5">
+        <AtmosphericBackground blurAmount="3xl" opacity="opacity-30" />
+        <div className="absolute inset-0 bg-gradient-to-b from-birlik-primary via-birlik-primary/90 to-birlik-primary"></div>
+        
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="text-center mb-24">
+                <div className="inline-block px-6 py-2.5 bg-birlik-accent-sand/20 border border-birlik-accent-sand/30 rounded-full mb-8 backdrop-blur-xl">
+                    <span className="text-sm font-black text-birlik-accent-sand tracking-[0.4em] uppercase">Premium Quality Standards</span>
+                </div>
+                <h2 className="text-5xl md:text-8xl font-black text-white tracking-tighter leading-none mb-10">{t('polymerProductFeatures')}</h2>
+                <p className="text-birlik-accent-sand/60 max-w-2xl mx-auto text-2xl font-light italic">{t('polymerProductFeatures_subtitle')}</p>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-10">
+                {features.map((feature, index) => <FeatureCard key={feature.key} feature={feature} index={index} inView={inView} />)}
+            </div>
+        </div>
+    </section>
+  );
+};
+
+const BestSellersSection: React.FC = () => {
+    const { t } = useLanguage();
+    const bestSellerSkus = ['PS-AB-20120', 'PVC-ELEGANCE-244X122', 'PS-SPR-115-1', 'PS-C-013', 'PS-ECO-LW-12120', 'PVC-ROCKY-244x122'];
+
+    const bestSellers = useMemo(() => {
+        return bestSellerSkus.map(sku => products.find(p => p.SKU === sku)).filter((p): p is Product => p !== undefined);
+    }, []);
+
+    return (
+        <section className="relative bg-birlik-primary py-24 lg:py-40 overflow-hidden border-t border-white/5">
+            <AtmosphericBackground blurAmount="3xl" opacity="opacity-40" />
+            <div className="absolute inset-0 bg-gradient-to-b from-birlik-primary via-birlik-primary/90 to-birlik-primary/95"></div>
+
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div className="text-center mb-24">
+                    <div className="inline-block px-6 py-2.5 bg-birlik-accent-sand/30 rounded-full mb-8 backdrop-blur-2xl shadow-xl">
+                        <span className="text-sm font-black text-white tracking-[0.4em] uppercase">{t('bestSellers')}</span>
+                    </div>
+                    <h2 className="text-6xl md:text-9xl font-black text-white tracking-tighter leading-none mb-10">
+                        {t('bestSellers')}
+                    </h2>
+                    <p className="text-birlik-accent-sand/60 max-w-2xl mx-auto text-2xl font-light italic leading-relaxed">
+                        {t('heroSubtitle')}
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-16">
+                    {bestSellers.map(product => (
+                        <BestSellerGalleryCard key={product.SKU} product={product} />
+                    ))}
+                </div>
+
+                <div className="mt-28 text-center">
+                    <Link 
+                        to="/urunler/ps_fluted" 
+                        className="group inline-flex items-center gap-6 px-16 py-6 bg-birlik-accent-sand text-birlik-primary font-black rounded-full shadow-[0_20px_50px_rgba(228,216,199,0.2)] hover:bg-white transition-all duration-700 hover:scale-110 active:scale-95"
+                    >
+                        <span className="text-xl tracking-widest uppercase">{t('exploreProducts')}</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 transition-transform duration-500 group-hover:translate-x-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                    </Link>
+                </div>
+            </div>
+        </section>
+    );
+};
+
+// --- Best Seller Gallery Card ---
 
 const BestSellerGalleryCard: React.FC<{ product: Product }> = ({ product }) => {
     const { language, t } = useLanguage();
@@ -348,9 +420,9 @@ const BestSellerGalleryCard: React.FC<{ product: Product }> = ({ product }) => {
     return (
         <Link 
             to={getLink()} 
-            className={`group relative bg-white rounded-2xl shadow-xl overflow-hidden block transition-all duration-700 hover:shadow-[0_30px_60px_rgba(228,216,199,0.15)] hover:-translate-y-3 ${isSoldOut ? 'grayscale opacity-80' : ''}`}
+            className={`group relative bg-white/5 backdrop-blur-xl rounded-[3rem] shadow-2xl overflow-hidden block transition-all duration-1000 border border-white/10 hover:border-birlik-accent-sand/40 hover:-translate-y-6 ${isSoldOut ? 'grayscale opacity-70' : ''}`}
         >
-            <div className="relative aspect-[4/5] overflow-hidden bg-gray-100">
+            <div className="relative aspect-[4/5] overflow-hidden bg-black/20">
                 {product.images.map((img, idx) => (
                     <img 
                         key={idx}
@@ -359,34 +431,34 @@ const BestSellerGalleryCard: React.FC<{ product: Product }> = ({ product }) => {
                         className={`absolute inset-0 w-full h-full object-cover transition-all duration-[1500ms] ease-in-out transform ${idx === currentImgIndex ? 'opacity-100 scale-105' : 'opacity-0 scale-100'}`}
                     />
                 ))}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
-                <div className="absolute top-5 left-5 flex flex-col gap-2 z-10">
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-700"></div>
+                <div className="absolute top-8 left-8 flex flex-col gap-3 z-10">
                     {product.isNew && (
-                        <span className="bg-green-500 text-white text-[10px] font-black px-3 py-1 rounded-full shadow-xl uppercase tracking-widest animate-pulse">
+                        <span className="bg-green-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full shadow-2xl uppercase tracking-widest animate-pulse">
                             {t('newLabel')}
                         </span>
                     )}
                     {isSoldOut && (
-                        <span className="bg-red-600 text-white text-[10px] font-black px-3 py-1 rounded-full shadow-xl uppercase tracking-widest">
+                        <span className="bg-red-600 text-white text-[10px] font-black px-4 py-1.5 rounded-full shadow-2xl uppercase tracking-widest">
                             {t('soldOut')}
                         </span>
                     )}
                 </div>
             </div>
-            <div className="absolute bottom-0 left-0 right-0 p-8 text-white z-10">
-                <div className="mb-2">
-                    <span className="text-[10px] font-bold text-birlik-accent-sand uppercase tracking-[0.2em] opacity-80">
+            <div className="absolute bottom-0 left-0 right-0 p-10 text-white z-10">
+                <div className="mb-3">
+                    <span className="text-xs font-bold text-birlik-accent-sand uppercase tracking-[0.3em] opacity-90">
                         {t(product.Category)}
                     </span>
                 </div>
-                <h3 className="text-xl md:text-2xl font-bold leading-tight drop-shadow-lg mb-2">
+                <h3 className="text-2xl md:text-3xl font-bold leading-tight mb-4 drop-shadow-2xl">
                     {getProductName()}
                 </h3>
-                <div className="flex items-center justify-between mt-4">
-                    <p className="text-[10px] font-mono text-white/60 tracking-wider">SKU: {product.SKU}</p>
-                    <div className="flex items-center gap-2 text-sm font-black text-birlik-accent-sand transition-transform group-hover:translate-x-1">
+                <div className="flex items-center justify-between mt-6">
+                    <p className="text-[10px] font-mono text-white/50 tracking-widest">SKU: {product.SKU}</p>
+                    <div className="flex items-center gap-3 text-sm font-black text-birlik-accent-sand transition-all duration-500 group-hover:translate-x-2">
                         <span>{t('viewProducts')}</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" /></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={4} d="M9 5l7 7-7 7" /></svg>
                     </div>
                 </div>
             </div>
@@ -394,53 +466,28 @@ const BestSellerGalleryCard: React.FC<{ product: Product }> = ({ product }) => {
     );
 };
 
-const BestSellersSection: React.FC = () => {
-    const { t } = useLanguage();
-    const bestSellerSkus = ['PS-AB-20120', 'PVC-ELEGANCE-244X122', 'PS-SPR-115-1', 'PS-C-013', 'PS-ECO-LW-12120', 'PVC-ROCKY-244x122'];
+// --- Polymer Feature Component ---
 
-    const bestSellers = useMemo(() => {
-        return bestSellerSkus.map(sku => products.find(p => p.SKU === sku)).filter((p): p is Product => p !== undefined);
-    }, []);
-
-    return (
-        <section className="relative bg-birlik-primary py-24 lg:py-32 overflow-hidden">
-            <AtmosphericBackground blurAmount="3xl" opacity="opacity-30" />
-            <div className="absolute inset-0 bg-gradient-to-b from-birlik-primary via-birlik-primary/90 to-birlik-primary"></div>
-
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div className="text-center mb-20">
-                    <div className="inline-block px-4 py-1.5 bg-birlik-accent-sand/30 rounded-full mb-6">
-                        <span className="text-xs font-black text-white tracking-[0.3em] uppercase">{t('bestSellers')}</span>
-                    </div>
-                    <h2 className="text-4xl md:text-7xl font-bold text-white tracking-tight mb-6">
-                        {t('bestSellers')}
-                    </h2>
-                    <p className="text-birlik-accent-sand/60 max-w-2xl mx-auto text-lg md:text-xl font-light italic">
-                        {t('heroSubtitle')}
-                    </p>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-12">
-                    {bestSellers.map(product => (
-                        <BestSellerGalleryCard key={product.SKU} product={product} />
-                    ))}
-                </div>
-
-                <div className="mt-20 text-center">
-                    <Link 
-                        to="/urunler/ps_fluted" 
-                        className="group inline-flex items-center gap-4 px-12 py-5 bg-birlik-accent-sand text-birlik-primary font-bold rounded-full shadow-2xl hover:bg-white transition-all hover:scale-105 active:scale-95"
-                    >
-                        <span className="text-lg tracking-wide uppercase">{t('exploreProducts')}</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 transition-transform group-hover:translate-x-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                    </Link>
-                </div>
-            </div>
-        </section>
-    );
+const FeatureCard: React.FC<{ feature: {key: string; Icon: React.FC}; index: number; inView: boolean }> = ({ feature, index, inView }) => {
+  const { t } = useLanguage();
+  const { key, Icon } = feature;
+  return (
+    <div 
+      className={`bg-white/5 backdrop-blur-2xl p-10 rounded-[3rem] border border-white/10 text-center transform transition-all duration-1000 ease-birlik-ease hover:border-birlik-accent-sand/40 hover:-translate-y-6 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
+      style={{ transitionDelay: `${index * 100}ms` }}
+    >
+      <div className="flex justify-center items-center mb-8">
+        <div className="bg-birlik-accent-sand p-5 rounded-3xl text-birlik-primary shadow-[0_15px_30px_rgba(0,0,0,0.3)] group-hover:scale-110 transition-transform duration-500">
+          <Icon />
+        </div>
+      </div>
+      <h3 className="text-xl font-black text-white mb-4 uppercase tracking-widest leading-tight drop-shadow-lg">{t(`feature_${key}_title`)}</h3>
+      <p className="text-base text-birlik-accent-sand/70 leading-relaxed font-light">{t(`feature_${key}_desc`)}</p>
+    </div>
+  );
 };
 
-// --- Polymer Features Section ---
+// --- Helper Components ---
 
 const useInView = (options: IntersectionObserverInit) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -459,16 +506,16 @@ const useInView = (options: IntersectionObserverInit) => {
   return [containerRef, isInView] as const;
 };
 
-const PolymerFormulaIcon: React.FC = () => <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4.6 10.7c.8-1.5 2.1-2.8 3.7-3.8.7-.4 1.4-.7 2.2-.9M19.4 13.3c-.8 1.5-2.1 2.8-3.7 3.8-.7.4-1.4.7-2.2.9M14.7 4.6c1.5.8 2.8 2.1 3.8 3.7.4.7.7 1.4.9 2.2M9.3 19.4c-1.5-.8-2.8-2.1-3.8-3.7-.4-.7-.7-1.4-.9-2.2"/><path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Z"/><path d="M15 9l-6 6"/><path d="m9 9 1.8 1.8"/><path d="m13.2 13.2 1.8 1.8"/></svg>;
-const PaintableIcon: React.FC = () => <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22v-3"/><path d="M18 16v-3"/><path d="M6 16v-3"/><path d="M12 13V2"/><path d="M20 8v5"/><path d="M4 8v5"/><path d="M12 2a4 4 0 0 0-4 4v5a4 4 0 0 0 8 0V6a4 4 0 0 0-4-4Z"/></svg>;
-const EasyInstallationIcon: React.FC = () => <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.94 14.06a8.92 8.92 0 0 0-1.82-3.13c-.8-.9-1.7-1.7-2.7-2.3s-2.1-.9-3.3-1c-1.2-.1-2.4 0-3.6.4-1.2.4-2.3.9-3.3 1.6-1 .7-1.9 1.5-2.6 2.5a8.92 8.92 0 0 0-1.26 3.42"/><path d="M3.06 9.94a8.92 8.92 0 0 1 1.82-3.13c.8-.9 1.7-1.7 2.7-2.3s2.1-.9 3.3-1c1.2-.1 2.4 0 3.6.4 1.2.4 2.3.9-3.3 1.6-1 .7-1.9 1.5-2.6 2.5a8.92 8.92 0 0 1 1.26 3.42"/></svg>;
-const AntibacterialIcon: React.FC = () => <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m8.5 10.5 7 7"/><path d="m15.5 10.5-7 7"/></svg>;
-const CutableIcon: React.FC = () => <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22v-2"/><path d="M14.5 20h-5"/><path d="M21 16h.5a2.5 2.5 0 0 1 0 5h-19a2.5 2.5 0 0 1 0-5H3"/><path d="M21 16V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10"/><path d="M18 10c0-1.1-.9-2-2-2s-2 .9-2 2 .9 2 2 2 2-.9 2-2Z"/><path d="M6 10c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2Z"/></svg>;
-const WaterResistantIcon: React.FC = () => <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 12a3 3 0 0 0-3 3c0 1.66 2 3 3 3s3-1.34 3-3a3 3 0 0 0-3-3z"/></svg>;
-const AdhesiveIcon: React.FC = () => <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m14 4 4 4"/><path d="M12 22 6 16l6-6 6 6-6 6Z"/><path d="M12 16H6V4h2"/><path d="M12 8a2 2 0 1 1 4 0v8a2 2 0 1 1-4 0Z"/></svg>;
-const EcoFriendlyIcon: React.FC = () => <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/><path d="M7.5 3C9 3 10 4 11 5c1-1 2-2 3.5-2"/></svg>;
-const ImpactResistantIcon: React.FC = () => <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m2 15 2 2 2-2"/><path d="m22 15-2 2-2-2"/><path d="m15 2-2 2-2-2"/><path d="M9 22l2-2 2 2"/><path d="M17 17 7 7"/><path d="M7 17 17 7"/></svg>;
-const RecyclableIcon: React.FC = () => <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 8v4l-4-4"/><path d="M16 12h-4l-4 4"/></svg>;
+const PolymerFormulaIcon: React.FC = () => <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4.6 10.7c.8-1.5 2.1-2.8 3.7-3.8.7-.4 1.4-.7 2.2-.9M19.4 13.3c-.8 1.5-2.1 2.8-3.7 3.8-.7.4-1.4.7-2.2.9M14.7 4.6c1.5.8 2.8 2.1 3.8 3.7.4.7.7 1.4.9 2.2M9.3 19.4c-1.5-.8-2.8-2.1-3.8-3.7-.4-.7-.7-1.4-.9-2.2"/><path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Z"/><path d="M15 9l-6 6"/><path d="m9 9 1.8 1.8"/><path d="m13.2 13.2 1.8 1.8"/></svg>;
+const PaintableIcon: React.FC = () => <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22v-3"/><path d="M18 16v-3"/><path d="M6 16v-3"/><path d="M12 13V2"/><path d="M20 8v5"/><path d="M4 8v5"/><path d="M12 2a4 4 0 0 0-4 4v5a4 4 0 0 0 8 0V6a4 4 0 0 0-4-4Z"/></svg>;
+const EasyInstallationIcon: React.FC = () => <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20.94 14.06a8.92 8.92 0 0 0-1.82-3.13c-.8-.9-1.7-1.7-2.7-2.3s-2.1-.9-3.3-1c-1.2-.1-2.4 0-3.6.4-1.2.4-2.3.9-3.3 1.6-1 .7-1.9 1.5-2.6 2.5a8.92 8.92 0 0 0-1.26 3.42"/><path d="M3.06 9.94a8.92 8.92 0 0 1 1.82-3.13c.8-.9 1.7-1.7 2.7-2.3s2.1-.9 3.3-1c1.2-.1 2.4 0 3.6.4 1.2.4 2.3.9-3.3 1.6-1 .7-1.9 1.5-2.6 2.5a8.92 8.92 0 0 1 1.26 3.42"/></svg>;
+const AntibacterialIcon: React.FC = () => <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m8.5 10.5 7 7"/><path d="m15.5 10.5-7 7"/></svg>;
+const CutableIcon: React.FC = () => <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22v-2"/><path d="M14.5 20h-5"/><path d="M21 16h.5a2.5 2.5 0 0 1 0 5h-19a2.5 2.5 0 0 1 0-5H3"/><path d="M21 16V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10"/><path d="M18 10c0-1.1-.9-2-2-2s-2 .9-2 2 .9 2 2 2 2-.9 2-2Z"/><path d="M6 10c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2Z"/></svg>;
+const WaterResistantIcon: React.FC = () => <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 12a3 3 0 0 0-3 3c0 1.66 2 3 3 3s3-1.34 3-3a3 3 0 0 0-3-3z"/></svg>;
+const AdhesiveIcon: React.FC = () => <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m14 4 4 4"/><path d="M12 22 6 16l6-6 6 6-6 6Z"/><path d="M12 16H6V4h2"/><path d="M12 8a2 2 0 1 1 4 0v8a2 2 0 1 1-4 0Z"/></svg>;
+const EcoFriendlyIcon: React.FC = () => <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/><path d="M7.5 3C9 3 10 4 11 5c1-1 2-2 3.5-2"/></svg>;
+const ImpactResistantIcon: React.FC = () => <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m2 15 2 2 2-2"/><path d="m22 15-2 2-2-2"/><path d="m15 2-2 2-2-2"/><path d="M9 22l2-2 2 2"/><path d="M17 17 7 7"/><path d="M7 17 17 7"/></svg>;
+const RecyclableIcon: React.FC = () => <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 8v4l-4-4"/><path d="M16 12h-4l-4 4"/></svg>;
 
 const features = [
   { key: 'polymer_formula', Icon: PolymerFormulaIcon }, { key: 'paintable', Icon: PaintableIcon },
@@ -478,60 +525,17 @@ const features = [
   { key: 'impact_resistant', Icon: ImpactResistantIcon }, { key: 'recyclable', Icon: RecyclableIcon },
 ];
 
-const FeatureCard: React.FC<{ feature: {key: string; Icon: React.FC}; index: number; inView: boolean }> = ({ feature, index, inView }) => {
-  const { t } = useLanguage();
-  const { key, Icon } = feature;
-  return (
-    <div 
-      className={`bg-white/5 backdrop-blur-xl p-8 rounded-3xl border border-white/10 text-center transform transition-all duration-700 ease-birlik-ease hover:border-birlik-accent-sand/40 hover:-translate-y-4 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-      style={{ transitionDelay: `${index * 80}ms` }}
-    >
-      <div className="flex justify-center items-center mb-6">
-        <div className="bg-birlik-accent-sand p-4 rounded-2xl text-birlik-primary shadow-[0_10px_20px_rgba(0,0,0,0.2)]">
-          <Icon />
-        </div>
-      </div>
-      <h3 className="text-lg font-black text-white mb-3 uppercase tracking-wider leading-tight">{t(`feature_${key}_title`)}</h3>
-      <p className="text-sm text-birlik-accent-sand/70 leading-relaxed font-light">{t(`feature_${key}_desc`)}</p>
-    </div>
-  );
-};
-
-const PolymerFeaturesSection = () => {
-  const { t } = useLanguage();
-  const [ref, inView] = useInView({ threshold: 0.1 });
-  return (
-    <section ref={ref} className="relative bg-birlik-primary py-24 lg:py-32 overflow-hidden">
-        <AtmosphericBackground blurAmount="3xl" opacity="opacity-30" />
-        <div className="absolute inset-0 bg-gradient-to-b from-birlik-primary via-birlik-primary/95 to-birlik-primary"></div>
-        
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="text-center mb-20">
-                <div className="inline-block px-4 py-1.5 bg-birlik-accent-sand/20 border border-birlik-accent-sand/30 rounded-full mb-6">
-                    <span className="text-xs font-black text-birlik-accent-sand tracking-[0.3em] uppercase">Premium Quality Features</span>
-                </div>
-                <h2 className="text-4xl md:text-7xl font-bold text-white tracking-tight mb-6">{t('polymerProductFeatures')}</h2>
-                <p className="text-birlik-accent-sand/60 max-w-2xl mx-auto text-xl font-light italic">{t('polymerProductFeatures_subtitle')}</p>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8">
-                {features.map((feature, index) => <FeatureCard key={feature.key} feature={feature} index={index} inView={inView} />)}
-            </div>
-        </div>
-    </section>
-  );
-};
-
 const NewsletterSection: React.FC = () => {
     const { t } = useLanguage();
     return (
-        <section className="bg-birlik-accent-beige py-16">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 className="text-3xl font-bold text-birlik-primary">{t('newsletterTitle')}</h2>
-                <p className="mt-2 text-birlik-neutral-charcoal max-w-xl mx-auto">{t('newsletterSubtitle')}</p>
-                <form action={`https://formsubmit.co/${COMPANY_INFO.email}`} method="POST" className="mt-8 max-w-md mx-auto flex flex-col sm:flex-row gap-4">
+        <section className="bg-birlik-accent-beige py-20 relative overflow-hidden">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+                <h2 className="text-4xl font-bold text-birlik-primary tracking-tight mb-4">{t('newsletterTitle')}</h2>
+                <p className="mt-2 text-birlik-neutral-charcoal max-w-2xl mx-auto text-xl font-light italic">{t('newsletterSubtitle')}</p>
+                <form action={`https://formsubmit.co/${COMPANY_INFO.email}`} method="POST" className="mt-12 max-w-xl mx-auto flex flex-col sm:flex-row gap-4">
                     <input type="hidden" name="_subject" value="New Newsletter Subscription Request" /><input type="hidden" name="_captcha" value="false" />
-                    <input type="email" name="email" placeholder={t('emailPlaceholder')} className="w-full px-4 py-3 rounded-lg border border-birlik-primary/20 focus:ring-2 focus:ring-birlik-primary focus:outline-none" required />
-                    <button type="submit" className="bg-birlik-primary text-white font-bold py-3 px-6 rounded-lg shadow hover:bg-opacity-90 transition-colors duration-200">{t('subscribe')}</button>
+                    <input type="email" name="email" placeholder={t('emailPlaceholder')} className="w-full px-6 py-4 rounded-full border border-birlik-primary/20 focus:ring-4 focus:ring-birlik-primary/10 focus:outline-none transition-all" required />
+                    <button type="submit" className="bg-birlik-primary text-white font-black py-4 px-10 rounded-full shadow-2xl hover:bg-birlik-neutral-charcoal transition-all duration-300 transform hover:scale-105 active:scale-95 uppercase tracking-widest">{t('subscribe')}</button>
                 </form>
             </div>
         </section>
@@ -547,7 +551,6 @@ const HomePage: React.FC = () => {
     if (language === 'en') { title = 'Birlik Company | PS Fluted & PVC Marble Panels - Mersin, Turkey'; description = 'Birlik Company is your leading supplier of decorative materials in Mersin, Turkey.'; }
     else if (language === 'ar') { title = 'شركة بيرليك | بديل الخشب وبديل الرخام - مرسين، تركيا'; description = 'شركة بيرليك هي موردك الرائد لمواد الديكور في مرسين، تركيا.'; }
 
-    const canonicalUrl = window.location.href;
     document.title = title;
     document.querySelector('meta[name="description"]')?.setAttribute('content', description);
     
