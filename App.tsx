@@ -1,7 +1,7 @@
 
 import React from 'react';
-import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { LanguageProvider, useLanguage } from './context/LanguageContext';
+import { HashRouter, MemoryRouter, Routes, Route } from 'react-router-dom';
+import { LanguageProvider } from './context/LanguageContext';
 import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
 import ProductListPage from './pages/ProductListPage';
@@ -11,21 +11,22 @@ import ContactPage from './pages/ContactPage';
 import Analytics from './components/Analytics';
 
 const HomeHandler: React.FC = () => {
-  const { language } = useLanguage();
-
-  if (language === 'en') {
-    return <Navigate to="/en" replace />;
-  }
-  if (language === 'ar') {
-    return <Navigate to="/ar" replace />;
-  }
+  // Directly render HomePage to avoid programmatic redirects (Navigate) 
+  // which can trigger "Location.assign: Access denied" in some sandboxed environments.
   return <HomePage />;
 };
 
 function App() {
+  // Detect if we are in a restricted blob environment (common in some sandboxes/previews)
+  // MemoryRouter is used as a fallback because HashRouter/BrowserRouter might trigger 
+  // Location.assign errors when trying to sync with the browser address bar.
+  const isBlobEnvironment = typeof window !== 'undefined' && window.location.protocol === 'blob:';
+  
+  const Router = isBlobEnvironment ? MemoryRouter : HashRouter;
+
   return (
     <LanguageProvider>
-      <HashRouter>
+      <Router>
         <Analytics />
         <Routes>
           <Route path="/" element={<Layout />}>
@@ -40,18 +41,18 @@ function App() {
             <Route path="/en" element={<HomePage />} />
             <Route path="/en/products/:categorySlug" element={<ProductListPage />} />
             <Route path="/en/product/:sku" element={<ProductDetailPage />} />
-            <Route path="/en/calculator" element={<CalculatorPage />} />
+            <Route path="/en/calculator" element={<ProductDetailPage />} />
             <Route path="/en/contact" element={<ContactPage />} />
             
             {/* Arabic routes */}
             <Route path="/ar" element={<HomePage />} />
             <Route path="/ar/products/:categorySlug" element={<ProductListPage />} />
             <Route path="/ar/product/:sku" element={<ProductDetailPage />} />
-            <Route path="/ar/calculator" element={<CalculatorPage />} />
+            <Route path="/ar/calculator" element={<ProductDetailPage />} />
             <Route path="/ar/contact" element={<ContactPage />} />
           </Route>
         </Routes>
-      </HashRouter>
+      </Router>
     </LanguageProvider>
   );
 }

@@ -1,3 +1,4 @@
+
 import { ProductCategory } from './types';
 
 export const COMPANY_INFO = {
@@ -52,6 +53,8 @@ export const translations = {
     surface: 'Yüzey',
     unitPieces: 'adet',
     searchProducts: 'Ürünleri ara...',
+    soldOut: 'Tükendi',
+    newLabel: 'YENİ',
     // Contact Page
     getInTouch: 'İletişime Geçin',
     contactIntro: 'Sorularınız, işbirliği teklifleriniz veya ürünlerimiz hakkında daha fazla bilgi için bize ulaşmaktan çekinmeyin.',
@@ -172,6 +175,8 @@ export const translations = {
     surface: 'Surface',
     unitPieces: 'pieces',
     searchProducts: 'Search products...',
+    soldOut: 'Sold Out',
+    newLabel: 'NEW',
     // Contact Page
     getInTouch: 'Get In Touch',
     contactIntro: 'Feel free to contact us for your questions, collaboration proposals or for more information about our products.',
@@ -292,6 +297,8 @@ export const translations = {
     surface: 'السطح',
     unitPieces: 'قطع',
     searchProducts: 'ابحث عن المنتجات...',
+    soldOut: 'نفدت الكمية',
+    newLabel: 'جديد',
     // Contact Page
     getInTouch: 'ابقى على تواصل',
     contactIntro: 'لا تتردد في الاتصال بنا لطرح أسئلتك أو مقترحات التعاون أو لمزيد من المعلومات حول منتجاتنا.',

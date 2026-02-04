@@ -87,30 +87,63 @@ export const products: Product[] = [
   },
 
   // B) PVC UV Kaplamalı Mermer Levhalar
+  // NEW IN STOCK PVC MARBLE PRODUCTS
   {
-    SKU: 'PVC-PARMA-244x122', Name_TR: 'Parma UV Mermer Levha', Name_EN: 'PVC UV Marble Sheet - Parma', Name_AR: 'بديل رخام PVC UV – Parma', Category: ProductCategory.PVC_UV_MARBLE,
-    Short_Desc_TR: 'Parlak yüzeyli, yüksek kaliteli Parma desenli mermer levha.', Short_Desc_EN: 'High-quality Parma patterned marble sheet with a glossy surface.', Short_Desc_AR: 'لوح رخام عالي الجودة بنمط بارما وسطح لامع.',
-    Material: Material.PVC, Surface_Finish: 'glossy', Width_cm: 122, Height_or_Length_cm: 244, Thickness_mm: 0.3, Stock_Status: StockStatus.IN_STOCK, Slug: createSlug('Parma UV Mermer Levha'), images: ['https://res.cloudinary.com/dsqrdreft/image/upload/v1756297605/pvc_uv_marble_PVC-PARMA-244x122_main_01_s7aoxc.png', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1756297609/pvc_uv_marble_PVC-PARMA-244x122_room_01_cyjjh5.png', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1756297609/pvc_uv_marble_PVC-PARMA-244x122_room_02_x16qay.png']
+    SKU: 'PVC-LENIN-244X122', Name_TR: 'LENIN UV Mermer Levha', Name_EN: 'LENIN PVC UV Marble Sheet', Name_AR: 'بديل رخام - LENIN PVC', Category: ProductCategory.PVC_UV_MARBLE,
+    Short_Desc_TR: 'Yeni koleksiyon parlak yüzeyli yüksek kaliteli mermer levha.', Short_Desc_EN: 'New collection high-quality marble sheet with a glossy surface.', Short_Desc_AR: 'مجموعة جديدة من ألواح الرخام عالية الجودة مع سطح لامع.',
+    Material: Material.PVC, Surface_Finish: 'glossy', Width_cm: 122, Height_or_Length_cm: 244, Thickness_mm: 0.3, Stock_Status: StockStatus.IN_STOCK, isNew: true, Slug: createSlug('LENIN UV Mermer Levha 01'), images:  ['https://res.cloudinary.com/dsqrdreft/image/upload/v1770195820/WhatsApp_Image_2026-01-15_at_18.08.05_dfmj1t.jpg', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1770195723/Generated_Image_February_02_2026_-_1_38PM_r3dyob.png', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1770195723/Generated_Image_February_02_2026_-_1_27PM_icq220.png' , 'https://res.cloudinary.com/dsqrdreft/image/upload/v1770195723/Generated_Image_February_02_2026_-_1_33PM_vtzs5x.png']
   },
   {
-    SKU: 'PVC-TARANTO-244x122', Name_TR: 'Taranto UV Mermer Levha', Name_EN: 'PVC UV Marble Sheet - Taranto', Name_AR: 'بديل رخام PVC UV – Taranto', Category: ProductCategory.PVC_UV_MARBLE,
-    Short_Desc_TR: 'Zarif Taranto deseniyle mekanlarınıza lüks bir dokunuş katın.', Short_Desc_EN: 'Add a touch of luxury to your spaces with the elegant Taranto pattern.', Short_Desc_AR: 'أضف لمسة من الفخامة إلى مساحاتك بنمط تارانتو الأنيق.',
-    Material: Material.PVC, Surface_Finish: 'glossy', Width_cm: 122, Height_or_Length_cm: 244, Thickness_mm: 0.3, Stock_Status: StockStatus.IN_STOCK, Slug: createSlug('Taranto UV Mermer Levha'), images: ['https://res.cloudinary.com/dsqrdreft/image/upload/v1756297610/pvc_uv_marble_PVC-TARANTO-244x122_main_01_j97jef.png', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1756297613/pvc_uv_marble_PVC-TARANTO-244x122_room_01_s2moei.png']
+    SKU: 'PVC-NOIR-244X122', Name_TR: 'NOIR UV Mermer Levha 02', Name_EN: 'NOIR PVC UV Marble Sheet ', Name_AR: 'بديل رخام - NOIR PVC', Category: ProductCategory.PVC_UV_MARBLE,
+    Short_Desc_TR: 'Zarif ve modern yeni desenli mermer levha.', Short_Desc_EN: 'Elegant and modern new patterned marble sheet.', Short_Desc_AR: 'لوح رخام عصري وأنيق بنقشة جديدة.',
+    Material: Material.PVC, Surface_Finish: 'glossy', Width_cm: 122, Height_or_Length_cm: 244, Thickness_mm: 0.3, Stock_Status: StockStatus.IN_STOCK, isNew: true, Slug: createSlug('NOIR UV Mermer Levha 02'), images: ['https://res.cloudinary.com/dsqrdreft/image/upload/v1770196660/WhatsApp_Image_2026-01-15_at_18.08.05_3_cc4brw.jpg', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1770196672/Generated_Image_February_02_2026_-_1_22PM_cm7fwh.png', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1770196666/Generated_Image_February_02_2026_-_1_20PM_d9gabo.png' ]
   },
+  {
+    SKU: 'PVC-ROCKY-244x122', Name_TR: 'ROCKY UV Mermer Levha 03', Name_EN: 'ROCKY PVC UV Marble Sheet ', Name_AR: 'بديل رخام - ROCKY PVC', Category: ProductCategory.PVC_UV_MARBLE,
+    Short_Desc_TR: 'Yeni sofistike Onyx görünümlü mermer levha.', Short_Desc_EN: 'New sophisticated Onyx look marble sheet.', Short_Desc_AR: 'لوح رخام بمظهر أونيكس متطور جديد.',
+    Material: Material.PVC, Surface_Finish: 'glossy', Width_cm: 122, Height_or_Length_cm: 244, Thickness_mm: 0.3, Stock_Status: StockStatus.IN_STOCK, isNew: true, Slug: createSlug('ONYX UV Mermer Levha 03'), images: ['https://res.cloudinary.com/dsqrdreft/image/upload/v1770196435/WhatsApp_Image_2026-01-14_at_11.09.29_lze39l.jpg', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1770196439/Generated_Image_February_02_2026_-_1_10PM_bddwbp.png', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1770196437/Generated_Image_February_02_2026_-_1_03PM_mswyn1.png' ]
+  },
+  {
+    SKU: 'PVC-GOLDEN SILVER-244x122', Name_TR: 'GOLDEN SILVER UV Mermer Levha ', Name_EN: 'GOLDEN SILVER PVC UV Marble Sheet ', Name_AR: 'بديل رخام - GOLDEN SILVER PVC', Category: ProductCategory.PVC_UV_MARBLE,
+    Short_Desc_TR: 'Klasik damarlı yeni tasarım mermer levha.', Short_Desc_EN: 'New design marble sheet with classic veins.', Short_Desc_AR: 'لوح رخام بتصميم جديد وعروق كلاسيكية.',
+    Material: Material.PVC, Surface_Finish: 'glossy', Width_cm: 122, Height_or_Length_cm: 244, Thickness_mm: 0.3, Stock_Status: StockStatus.IN_STOCK, isNew: true, Slug: createSlug('GOLDEN SILVER UV Mermer Levha 04'), images: ['https://res.cloudinary.com/dsqrdreft/image/upload/v1770196757/Midnight-Aura_h6ji7g.jpg', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1770196771/Generated_Image_February_02_2026_-_1_43PM_a1twvo.png', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1770196765/Generated_Image_February_02_2026_-_1_40PM_occife.png' ]
+  },
+  {
+    SKU: 'PVC-ELENGANCE-244X122', Name_TR: 'ELENGANCE UV Mermer Levha ', Name_EN: 'ELENGANCE PVC UV Marble Sheet ', Name_AR: 'بديل رخام - ELENGANCE PVC ', Category: ProductCategory.PVC_UV_MARBLE,
+    Short_Desc_TR: 'Lüks ve estetik yeni İtalyan mermer deseni.', Short_Desc_EN: 'Luxury and aesthetic new Italian marble pattern.', Short_Desc_AR: 'نمط رخام إيطالي جديد فاخر وجمالي.',
+    Material: Material.PVC, Surface_Finish: 'glossy', Width_cm: 122, Height_or_Length_cm: 244, Thickness_mm: 0.3, Stock_Status: StockStatus.IN_STOCK, isNew: true, Slug: createSlug('ELENGANCE UV Mermer Levha 05'), images: ['https://res.cloudinary.com/dsqrdreft/image/upload/v1770196538/WhatsApp_Image_2026-01-14_at_11.09.28_1_uth42c.jpg', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1770196549/Generated_Image_February_02_2026_-_1_15PM_oibd5c.png', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1770196544/Generated_Image_February_02_2026_-_1_14PM_iqqwee.png' ]
+  },
+  {
+    SKU: 'PVC-SMOKEY GOLD-244X122', Name_TR: 'SMOKEY GOLD UV Mermer Levha ', Name_EN: 'SMOKEY GOLD PVC UV Marble Sheet ', Name_AR: 'بديل رخام - SMOKEY GOLD PVC ', Category: ProductCategory.PVC_UV_MARBLE,
+    Short_Desc_TR: 'Premium kalite yeni mermer levha tasarımı.', Short_Desc_EN: 'Premium quality new marble sheet design.', Short_Desc_AR: 'تصميم لوح رخام جديد بجودة ممتازة.',
+    Material: Material.PVC, Surface_Finish: 'glossy', Width_cm: 122, Height_or_Length_cm: 244, Thickness_mm: 0.3, Stock_Status: StockStatus.IN_STOCK, isNew: true, Slug: createSlug('SMOKEY GOLD UV Mermer Levha 06'), images: ['https://res.cloudinary.com/dsqrdreft/image/upload/v1770196869/Royal-Vein_uqbbrz.jpg', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1770196884/Generated_Image_February_04_2026_-_10_48AM_vbsvia.png', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1770200568/Screenshot_2026-02-04_132222_qzsn8v.png' ]
+  },
+
+  // EXISTING PVC PRODUCTS (Updated Statuses)
   {
     SKU: 'PVC-ONYX-244x122', Name_TR: 'Onyx UV Mermer Levha', Name_EN: 'PVC UV Marble Sheet - Onyx', Name_AR: 'بديل رخام PVC UV - Onyx', Category: ProductCategory.PVC_UV_MARBLE,
     Short_Desc_TR: 'Göz alıcı Onyx deseniyle dramatik ve sofistike bir görünüm.', Short_Desc_EN: 'A dramatic and sophisticated look with a stunning Onyx pattern.', Short_Desc_AR: 'مظهر درامي ومتطور بنمط أونيكس مذهل.',
     Material: Material.PVC, Surface_Finish: 'glossy', Width_cm: 122, Height_or_Length_cm: 244, Thickness_mm: 0.3, Stock_Status: StockStatus.IN_STOCK, Slug: createSlug('Onyx UV Mermer Levha'), images: ['https://res.cloudinary.com/dsqrdreft/image/upload/v1756297602/pvc_uv_marble_PVC-ONYX-244x122_main_01_xolptr.png', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1756297608/pvc_uv_marble_PVC-ONYX-244x122_room_01_g43xdw.png', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1756297602/pvc_uv_marble_PVC-ONYX-244x122_room_02_jczffk.png']
   },
   {
+    SKU: 'PVC-PARMA-244x122', Name_TR: 'Parma UV Mermer Levha', Name_EN: 'PVC UV Marble Sheet - Parma', Name_AR: 'بديل رخام PVC UV – Parma', Category: ProductCategory.PVC_UV_MARBLE,
+    Short_Desc_TR: 'Parlak yüzeyli, yüksek kaliteli Parma desenli mermer levha.', Short_Desc_EN: 'High-quality Parma patterned marble sheet with a glossy surface.', Short_Desc_AR: 'لوح رخام عالي الجودة بنمط بارما وسطح لامع.',
+    Material: Material.PVC, Surface_Finish: 'glossy', Width_cm: 122, Height_or_Length_cm: 244, Thickness_mm: 0.3, Stock_Status: StockStatus.OUT_OF_STOCK, Slug: createSlug('Parma UV Mermer Levha'), images: ['https://res.cloudinary.com/dsqrdreft/image/upload/v1756297605/pvc_uv_marble_PVC-PARMA-244x122_main_01_s7aoxc.png', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1756297609/pvc_uv_marble_PVC-PARMA-244x122_room_01_cyjjh5.png', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1756297609/pvc_uv_marble_PVC-PARMA-244x122_room_02_x16qay.png']
+  },
+  {
+    SKU: 'PVC-TARANTO-244x122', Name_TR: 'Taranto UV Mermer Levha', Name_EN: 'PVC UV Marble Sheet - Taranto', Name_AR: 'بديل رخام PVC UV – Taranto', Category: ProductCategory.PVC_UV_MARBLE,
+    Short_Desc_TR: 'Zarif Taranto deseniyle mekanlarınıza lüks bir dokunuş katın.', Short_Desc_EN: 'Add a touch of luxury to your spaces with the elegant Taranto pattern.', Short_Desc_AR: 'أضف لمسة من الفخامة إلى مساحاتك بنمط تارانتو الأنيق.',
+    Material: Material.PVC, Surface_Finish: 'glossy', Width_cm: 122, Height_or_Length_cm: 244, Thickness_mm: 0.3, Stock_Status: StockStatus.OUT_OF_STOCK, Slug: createSlug('Taranto UV Mermer Levha'), images: ['https://res.cloudinary.com/dsqrdreft/image/upload/v1756297610/pvc_uv_marble_PVC-TARANTO-244x122_main_01_j97jef.png', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1756297613/pvc_uv_marble_PVC-TARANTO-244x122_room_01_s2moei.png']
+  },
+  {
     SKU: 'PVC-PORTOFINO-244x122', Name_TR: 'Portofino UV Mermer Levha', Name_EN: 'PVC UV Marble Sheet - Portofino', Name_AR: 'بديل رخام PVC UV – Portofino', Category: ProductCategory.PVC_UV_MARBLE,
     Short_Desc_TR: 'Portofino mermerinin doğal ve zarif damarlarıyla estetik bir seçim.', Short_Desc_EN: 'An aesthetic choice with the natural and elegant veins of Portofino marble.', Short_Desc_AR: 'خيار جمالي مع عروق رخام بورتوفينو الطبيعية والأنيقة.',
-    Material: Material.PVC, Surface_Finish: 'glossy', Width_cm: 122, Height_or_Length_cm: 244, Thickness_mm: 0.3, Stock_Status: StockStatus.IN_STOCK, Slug: createSlug('Portofino UV Mermer Levha'), images: ['https://res.cloudinary.com/dsqrdreft/image/upload/v1756297606/pvc_uv_marble_PVC-PORTOFINO-244x122_main_01_egkcbb.png', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1756297612/pvc_uv_marble_PVC-PORTOFINO-244x122_room_02_eb8zkv.png', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1756297613/pvc_uv_marble_PVC-PORTOFINO-244x122_room_01_roblwm.png']
+    Material: Material.PVC, Surface_Finish: 'glossy', Width_cm: 122, Height_or_Length_cm: 244, Thickness_mm: 0.3, Stock_Status: StockStatus.OUT_OF_STOCK, Slug: createSlug('Portofino UV Mermer Levha'), images: ['https://res.cloudinary.com/dsqrdreft/image/upload/v1756297606/pvc_uv_marble_PVC-PORTOFINO-244x122_main_01_egkcbb.png', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1756297612/pvc_uv_marble_PVC-PORTOFINO-244x122_room_02_eb8zkv.png', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1756297613/pvc_uv_marble_PVC-PORTOFINO-244x122_room_01_roblwm.png']
   },
   {
     SKU: 'PVC-FLORENCE-244x122', Name_TR: 'Florence UV Mermer Levha', Name_EN: 'PVC UV Marble Sheet - Florence', Name_AR: 'بديل رخام PVC UV – Florence', Category: ProductCategory.PVC_UV_MARBLE,
     Short_Desc_TR: 'Florence desenli levha ile klasik İtalyan mermer şıklığı.', Short_Desc_EN: 'Classic Italian marble elegance with the Florence patterned sheet.', Short_Desc_AR: 'أناقة الرخام الإيطالي الكلاسيكي مع لوح فلورنسا المنقوش.',
-    Material: Material.PVC, Surface_Finish: 'glossy', Width_cm: 122, Height_or_Length_cm: 244, Thickness_mm: 0.3, Stock_Status: StockStatus.IN_STOCK, Slug: createSlug('Florence UV Mermer Levha'), images: ['https://res.cloudinary.com/dsqrdreft/image/upload/v1756297600/pvc_uv_marble_PVC-FLORENCE-244x122_main_01_s3jzzq.png', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1756297600/pvc_uv_marble_PVC-FLORENCE-244x122_room_01_jtisku.jpg', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1756297601/pvc_uv_marble_PVC-FLORENCE-244x122_room_02_v1cqg9.jpg', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1756297601/pvc_uv_marble_PVC-FLORENCE-244x122_room_03_mnmioe.jpg']
+    Material: Material.PVC, Surface_Finish: 'glossy', Width_cm: 122, Height_or_Length_cm: 244, Thickness_mm: 0.3, Stock_Status: StockStatus.OUT_OF_STOCK, Slug: createSlug('Florence UV Mermer Levha'), images: ['https://res.cloudinary.com/dsqrdreft/image/upload/v1756297600/pvc_uv_marble_PVC-FLORENCE-244x122_main_01_s3jzzq.png', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1756297600/pvc_uv_marble_PVC-FLORENCE-244x122_room_01_jtisku.jpg', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1756297601/pvc_uv_marble_PVC-FLORENCE-244x122_room_02_v1cqg9.jpg', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1756297601/pvc_uv_marble_PVC-FLORENCE-244x122_room_03_mnmioe.jpg']
   },
   
   // C) PS Süpürgelikler (Baseboards)

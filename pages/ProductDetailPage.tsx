@@ -1,10 +1,19 @@
+
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { products } from '../data/products';
 import { COMPANY_INFO } from '../constants';
+import { StockStatus } from '../types';
 import Breadcrumbs from '../components/Breadcrumbs';
 import ProductCalculator from '../components/ProductCalculator';
+
+// Fix: Extend Window interface to include gtag for analytics tracking
+declare global {
+  interface Window {
+    gtag: (...args: any[]) => void;
+  }
+}
 
 const ProductDetailPage: React.FC = () => {
   const { sku } = useParams<{ sku: string }>();
@@ -41,7 +50,12 @@ const ProductDetailPage: React.FC = () => {
         const productName = getProductName(product);
         const productDesc = getProductDesc(product);
         const categoryName = t(product.Category);
-        const canonicalUrl = window.location.href;
+        
+        // Safety: Check if we are in a blob URL context (often sandboxed)
+        const isBlobUrl = window.location.href.startsWith('blob:');
+        const canonicalUrl = isBlobUrl 
+          ? `https://birlik-insaat.com/#/product/${product.SKU}` // Fallback to production domain
+          : window.location.href;
 
         let title: string;
         let description: string;
@@ -64,14 +78,17 @@ const ProductDetailPage: React.FC = () => {
         document.title = title;
         document.querySelector('meta[name="description"]')?.setAttribute('content', description);
 
-        const existingCanonical = document.querySelector('link[rel="canonical"]');
-        if (existingCanonical) {
-            existingCanonical.setAttribute('href', canonicalUrl);
-        } else {
-            const link = document.createElement('link');
-            link.setAttribute('rel', 'canonical');
-            link.setAttribute('href', canonicalUrl);
-            document.head.appendChild(link);
+        // Only update canonical if not in a restricted blob context
+        if (!isBlobUrl) {
+          const existingCanonical = document.querySelector('link[rel="canonical"]');
+          if (existingCanonical) {
+              existingCanonical.setAttribute('href', canonicalUrl);
+          } else {
+              const link = document.createElement('link');
+              link.setAttribute('rel', 'canonical');
+              link.setAttribute('href', canonicalUrl);
+              document.head.appendChild(link);
+          }
         }
         
         // JSON-LD Schema
@@ -94,9 +111,9 @@ const ProductDetailPage: React.FC = () => {
                     },
                     "offers": {
                         "@type": "Offer",
-                        "url": window.location.href,
+                        "url": canonicalUrl,
                         "priceCurrency": "TRY",
-                        "availability": product.Stock_Status === 'in_stock' ? "https://schema.org/InStock" : "https://schema.org/PreOrder",
+                        "availability": product.Stock_Status === StockStatus.IN_STOCK ? "https://schema.org/InStock" : "https://schema.org/PreOrder",
                         "areaServed": {
                             "@type": "Place",
                             "name": "Mersin"
@@ -119,14 +136,18 @@ const ProductDetailPage: React.FC = () => {
         };
 
         const scriptId = 'json-ld-schema';
-        let script = document.getElementById(scriptId) as HTMLScriptElement | null;
-        if (!script) {
-            script = document.createElement('script');
-            script.id = scriptId;
-            script.type = 'application/ld+json';
-            document.head.appendChild(script);
+        try {
+          let script = document.getElementById(scriptId) as HTMLScriptElement | null;
+          if (!script) {
+              script = document.createElement('script');
+              script.id = scriptId;
+              script.type = 'application/ld+json';
+              document.head.appendChild(script);
+          }
+          script.innerHTML = JSON.stringify(schema);
+        } catch (e) {
+          console.warn('Could not inject JSON-LD schema:', e);
         }
-        script.innerHTML = JSON.stringify(schema);
     }
   }, [product, language, t, sku]);
   
@@ -140,29 +161,39 @@ const ProductDetailPage: React.FC = () => {
       </div>
     );
   }
+
+  const isSoldOut = product.Stock_Status === StockStatus.OUT_OF_STOCK;
   
   const handleWhatsAppClick = () => {
     // Analytics Event: whatsapp_click
-    if (typeof window.gtag === 'function') {
-      window.gtag('event', 'whatsapp_quote_click', {
-        event_category: 'engagement',
-        event_label: `Product: ${product.SKU}`,
-        product_sku: product.SKU,
-        product_name: getProductName(),
-        language: language,
-      });
+    try {
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'whatsapp_quote_click', {
+          event_category: 'engagement',
+          event_label: `Product: ${product.SKU}`,
+          product_sku: product.SKU,
+          product_name: getProductName(),
+          language: language,
+        });
+      }
+    } catch (e) {
+      console.warn('Analytics error on click:', e);
     }
   };
 
   const generateWhatsAppLink = () => {
     let message = '';
-    const pageUrl = window.location.href;
+    // Use safe URL for sharing
+    const safeUrl = window.location.href.startsWith('blob:') 
+      ? `https://birlik-insaat.com/#/product/${product.SKU}`
+      : window.location.href;
+
     if (language === 'en') {
-      message = `Hello Birlik, I'm interested in: ${product.Name_EN} (SKU: ${product.SKU}) - ${pageUrl}`;
+      message = `Hello Birlik, I'm interested in: ${product.Name_EN} (SKU: ${product.SKU}) - ${safeUrl}`;
     } else if (language === 'ar') {
-      message = `مرحباً بيرليك، أنا مهتم بالمنتج: ${product.Name_AR} (SKU: ${product.SKU}) - ${pageUrl}`;
+      message = `مرحباً بيرليك، أنا مهتم بالمنتج: ${product.Name_AR} (SKU: ${product.SKU}) - ${safeUrl}`;
     } else {
-      message = `Merhaba Birlik, şu ürünle ilgiliyorum: ${product.Name_TR} (SKU: ${product.SKU}) - ${pageUrl}`;
+      message = `Merhaba Birlik, şu ürünle ilgiliyorum: ${product.Name_TR} (SKU: ${product.SKU}) - ${safeUrl}`;
     }
     return `https://wa.me/${COMPANY_INFO.whatsappNumber}?text=${encodeURIComponent(message)}`;
   };
@@ -177,30 +208,37 @@ const ProductDetailPage: React.FC = () => {
 
 
   return (
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className={`container mx-auto px-4 sm:px-6 lg:px-8 py-12 transition-opacity duration-300 ${isSoldOut ? 'opacity-80' : 'opacity-100'}`}>
       <Breadcrumbs />
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         {/* Product Gallery */}
         <div className="w-full">
-            <div className="relative aspect-square bg-gray-200 rounded-lg shadow-lg overflow-hidden group">
+            <div className={`relative aspect-square bg-gray-200 rounded-lg shadow-lg overflow-hidden group ${isSoldOut ? 'grayscale-[0.3]' : ''}`}>
                 <img 
                     src={product.images[currentImageIndex]} 
                     alt={`${getProductName()} ${currentImageIndex + 1}`}
                     className="w-full h-full object-cover transition-opacity duration-300"
                     key={product.images[currentImageIndex]}
                 />
+                {isSoldOut && (
+                    <div className="absolute inset-0 bg-black/10 flex items-center justify-center z-10 pointer-events-none">
+                        <span className="bg-red-600 text-white font-bold px-8 py-3 rounded-full text-2xl shadow-xl border-4 border-white/50 transform -rotate-12 uppercase">
+                            {t('soldOut')}
+                        </span>
+                    </div>
+                )}
                 {product.images.length > 1 && (
                     <>
                         <button 
                             onClick={handlePrevImage}
-                            className="absolute top-1/2 left-3 transform -translate-y-1/2 bg-white/60 p-2 rounded-full text-birlik-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-white"
+                            className="absolute top-1/2 left-3 transform -translate-y-1/2 bg-white/60 p-2 rounded-full text-birlik-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-white z-20"
                             aria-label="Previous image"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" /></svg>
                         </button>
                          <button 
                             onClick={handleNextImage}
-                            className="absolute top-1/2 right-3 transform -translate-y-1/2 bg-white/60 p-2 rounded-full text-birlik-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-white"
+                            className="absolute top-1/2 right-3 transform -translate-y-1/2 bg-white/60 p-2 rounded-full text-birlik-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-white z-20"
                             aria-label="Next image"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
@@ -224,10 +262,27 @@ const ProductDetailPage: React.FC = () => {
         </div>
         
         {/* Product Info */}
-        <div>
-          <h1 className="text-3xl font-bold text-birlik-primary">{getProductName()}</h1>
+        <div className="flex flex-col">
+          <div className="flex items-center gap-3 flex-wrap">
+            <h1 className={`text-3xl font-bold ${isSoldOut ? 'text-gray-400' : 'text-birlik-primary'}`}>
+                {getProductName()}
+            </h1>
+            {product.isNew && (
+                <span className="bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full uppercase border border-green-200">
+                    {t('newLabel')}
+                </span>
+            )}
+            {isSoldOut && (
+                <span className="bg-red-100 text-red-600 text-xs font-bold px-3 py-1 rounded-full uppercase border border-red-200">
+                    {t('soldOut')}
+                </span>
+            )}
+          </div>
+          
           <p className="text-md text-gray-500 mt-2">SKU: {product.SKU}</p>
-          <p className="mt-4 text-lg text-birlik-neutral-charcoal">{getProductDesc()}</p>
+          <p className={`mt-4 text-lg leading-relaxed ${isSoldOut ? 'text-gray-400' : 'text-birlik-neutral-charcoal'}`}>
+            {getProductDesc()}
+          </p>
           
           <div className="mt-6 border-t pt-6">
             <h2 className="text-xl font-semibold mb-4">{t('productDetails')}</h2>
@@ -242,24 +297,26 @@ const ProductDetailPage: React.FC = () => {
             </ul>
           </div>
 
-          <div className="mt-8">
+          <div className="mt-8 flex-grow flex flex-col justify-end">
             <a 
-              href={generateWhatsAppLink()}
-              onClick={handleWhatsAppClick}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full bg-green-500 text-white font-bold py-3 px-6 rounded-lg flex items-center justify-center hover:bg-green-600 transition-colors duration-200 shadow"
+              href={isSoldOut ? undefined : generateWhatsAppLink()}
+              onClick={isSoldOut ? (e) => e.preventDefault() : handleWhatsAppClick}
+              target={isSoldOut ? undefined : "_blank"}
+              rel={isSoldOut ? undefined : "noopener noreferrer"}
+              className={`w-full font-bold py-4 px-6 rounded-lg flex items-center justify-center transition-all duration-200 shadow-lg ${isSoldOut ? 'bg-gray-300 text-gray-500 cursor-not-allowed grayscale' : 'bg-green-500 text-white hover:bg-green-600 hover:scale-[1.02]'}`}
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="currentColor" className="mr-3"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zM12.04 20.12c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31c-.82-1.31-1.26-2.82-1.26-4.38 0-4.54 3.68-8.22 8.22-8.22 2.22 0 4.29.86 5.81 2.38 1.52 1.52 2.38 3.59 2.38 5.82-.01 4.54-3.69 8.22-8.23 8.22zm4.32-5.11c-.24-.12-1.42-.7-1.64-.78-.23-.08-.39-.12-.56.12-.17.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2s-1.5-1.74-1.68-2.04-.03-.28.09-.39c.11-.11.24-.28.37-.42.12-.14.16-.24.24-.4.08-.16.04-.32-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.55-.42-.15 0-.31-.02-.48-.02s-.43.06-.66.3c-.22.24-.86.84-.86 2.07s.88 2.4 1 2.56c.12.16 1.73 2.64 4.2 3.72 2.46 1.08 2.46.72 2.9.7.44-.02 1.42-.58 1.62-1.14.2-.56.2-1.04.14-1.14-.06-.11-.22-.18-.46-.3z"/></svg>
-              {t('getQuoteOnWhatsApp')}
+              {isSoldOut ? t('soldOut') : t('getQuoteOnWhatsApp')}
             </a>
           </div>
         </div>
       </div>
       
-      <div className="mt-16">
-        <ProductCalculator product={product} />
-      </div>
+      {!isSoldOut && (
+        <div className="mt-16">
+            <ProductCalculator product={product} />
+        </div>
+      )}
 
     </div>
   );

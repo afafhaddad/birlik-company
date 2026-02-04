@@ -21,6 +21,7 @@ export enum ProductSeries {
 export enum StockStatus {
   IN_STOCK = 'in_stock',
   MADE_TO_ORDER = 'made_to_order',
+  OUT_OF_STOCK = 'out_of_stock',
 }
 
 export enum Material {
@@ -50,4 +51,5 @@ export interface Product {
   Stock_Status: StockStatus;
   Slug: string;
   images: string[];
+  isNew?: boolean;
 }

@@ -4,19 +4,26 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QYYM96DYXJ"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-QYYM96DYXJ');
+      try {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-QYYM96DYXJ');
+      } catch (e) {
+        console.warn('Google Analytics initialization failed:', e);
+      }
     </script>
     <!-- Microsoft Clarity -->
     <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "t3yodzh4ag");
+        try {
+            (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "t3yodzh4ag");
+        } catch (e) {
+            console.warn('Microsoft Clarity initialization failed:', e);
+        }
     </script>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="https://res.cloudinary.com/dsqrdreft/image/upload/v1756297555/logo_uej7ab.svg" />

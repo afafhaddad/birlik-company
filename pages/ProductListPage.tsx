@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+
+import React, { useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { products } from '../data/products';
-import { Product, ProductCategory } from '../types';
+import { Product, ProductCategory, StockStatus } from '../types';
 import { translations } from '../constants';
 import ProductCard from '../components/ProductCard';
 import Breadcrumbs from '../components/Breadcrumbs';
@@ -12,7 +13,29 @@ const ProductListPage: React.FC = () => {
   const { language, t } = useLanguage();
 
   const category = categorySlug as ProductCategory;
-  const filteredProducts = products.filter(p => p.Category === category);
+  
+  // Sort products based on priority:
+  // 1. isNew (true first)
+  // 2. Stock_Status (IN_STOCK > MADE_TO_ORDER > OUT_OF_STOCK)
+  const sortedProducts = useMemo(() => {
+    const filtered = products.filter(p => p.Category === category);
+    
+    return [...filtered].sort((a, b) => {
+        // First priority: isNew
+        if (a.isNew && !b.isNew) return -1;
+        if (!a.isNew && b.isNew) return 1;
+
+        // Second priority: Stock Status
+        const statusPriority: Record<StockStatus, number> = {
+            [StockStatus.IN_STOCK]: 0,
+            [StockStatus.MADE_TO_ORDER]: 1,
+            [StockStatus.OUT_OF_STOCK]: 2,
+        };
+
+        return statusPriority[a.Stock_Status] - statusPriority[b.Stock_Status];
+    });
+  }, [category]);
+
   const categoryName = translations[language][category] || 'Category';
   
   useEffect(() => {
@@ -92,12 +115,24 @@ const ProductListPage: React.FC = () => {
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <Breadcrumbs />
-      <h1 className="text-3xl md:text-4xl font-bold mb-8 text-birlik-primary">{categoryName}</h1>
+      <div className="flex justify-between items-end mb-8">
+          <div>
+            <h1 className="text-3xl md:text-4xl font-bold text-birlik-primary">{categoryName}</h1>
+            <p className="text-gray-500 mt-2">{t('exploreProducts')}</p>
+          </div>
+      </div>
+      
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {filteredProducts.map(product => (
+        {sortedProducts.map(product => (
           <ProductCard key={product.SKU} product={product} />
         ))}
       </div>
+      
+      {sortedProducts.length === 0 && (
+          <div className="text-center py-20 bg-gray-50 rounded-xl border border-dashed border-gray-300">
+              <p className="text-gray-400">{t('noResults') || 'No products found in this category.'}</p>
+          </div>
+      )}
     </div>
   );
 };
