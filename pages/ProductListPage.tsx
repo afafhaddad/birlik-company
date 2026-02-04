@@ -5,7 +5,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { products } from '../data/products';
 import { Product, ProductCategory, StockStatus } from '../types';
 import { translations } from '../constants';
-import ProductCard from '../components/ProductCard';
+import ProductListRow from '../components/ProductListRow';
 import Breadcrumbs from '../components/Breadcrumbs';
 
 const ProductListPage: React.FC = () => {
@@ -32,7 +32,14 @@ const ProductListPage: React.FC = () => {
             [StockStatus.OUT_OF_STOCK]: 2,
         };
 
-        return statusPriority[a.Stock_Status] - statusPriority[b.Stock_Status];
+        const priorityA = statusPriority[a.Stock_Status];
+        const priorityB = statusPriority[b.Stock_Status];
+
+        if (priorityA !== priorityB) {
+            return priorityA - priorityB;
+        }
+
+        return 0;
     });
   }, [category]);
 
@@ -115,16 +122,17 @@ const ProductListPage: React.FC = () => {
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <Breadcrumbs />
-      <div className="flex justify-between items-end mb-8">
+      <div className="flex justify-between items-end mb-10">
           <div>
-            <h1 className="text-3xl md:text-4xl font-bold text-birlik-primary">{categoryName}</h1>
-            <p className="text-gray-500 mt-2">{t('exploreProducts')}</p>
+            <h1 className="text-3xl md:text-5xl font-bold text-birlik-primary tracking-tight">{categoryName}</h1>
+            <p className="text-gray-500 mt-3 text-lg">{t('exploreProducts')}</p>
           </div>
       </div>
       
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      {/* Full Row Layout for All Categories */}
+      <div className="flex flex-col">
         {sortedProducts.map(product => (
-          <ProductCard key={product.SKU} product={product} />
+          <ProductListRow key={product.SKU} product={product} />
         ))}
       </div>
       
