@@ -58,7 +58,7 @@ export const products: Product[] = [
   {
     SKU: 'PS-ECO-R-12120', Name_TR: 'PS Polimer Duvar Lambiri 11.5 cm (Eco) - Royal', Name_EN: 'PS Fluted Wall Panel 11.5 cm (Eco) - Royal', Name_AR: 'بديل خشب PS 11.5 سم (Eco) - Royal', Category: ProductCategory.PS_FLUTED, Series: ProductSeries.ECO,
     Short_Desc_TR: 'Ekonomik seride yansıtıcı yüzeyiyle kraliyet şıklığı.', Short_Desc_EN: 'Royal elegance with a reflective surface in the economy series.', Short_Desc_AR: 'أناقة ملكية بسطح عاكس في السلسلة الاقتصادية.',
-    Material: Material.PS, Surface_Finish: 'reflective', Width_cm: 11.5, Height_or_Length_cm: 290, Thickness_cm: 0.6, Pack_Size: 22, Stock_Status: StockStatus.IN_STOCK, Slug: createSlug('PS Polimer Duvar Lambiri 11.5 cm (Eco) - Royal'), images: ['https://res.cloudinary.com/dsqrdreft/image/upload/v1756297582/ps_fluted_PS-ECO-R-12120_main_01_degrze.jpg', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1756297590/ps_fluted_PS-ECO-R-12120_room_01_ximywt.png', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1756297584/ps_fluted_PS-ECO-R-12120_room_03_ahlnpg.jpg', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1756297584/ps_fluted_PS-ECO-R-12120_texture_01_nrphui.jpg']
+    Material: Material.PS, Surface_Finish: 'reflective', Width_cm: 11.5, Height_or_Length_cm: 290, Thickness_cm: 0.6, Pack_Size: 22, Stock_Status: StockStatus.OUT_OF_STOCK, Slug: createSlug('PS Polimer Duvar Lambiri 11.5 cm (Eco) - Royal'), images: ['https://res.cloudinary.com/dsqrdreft/image/upload/v1756297582/ps_fluted_PS-ECO-R-12120_main_01_degrze.jpg', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1756297590/ps_fluted_PS-ECO-R-12120_room_01_ximywt.png', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1756297584/ps_fluted_PS-ECO-R-12120_room_03_ahlnpg.jpg', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1756297584/ps_fluted_PS-ECO-R-12120_texture_01_nrphui.jpg']
   },
   {
     SKU: 'PS-ECO-DTB-12120', Name_TR: 'PS Polimer Duvar Lambiri 11.5 cm (Eco) - Dark Timber Black', Name_EN: 'PS Fluted Wall Panel 11.5 cm (Eco) - Dark Timber Black', Name_AR: 'بديل خشب PS 11.5 سم (Eco) - Dark Timber Black', Category: ProductCategory.PS_FLUTED, Series: ProductSeries.ECO,
@@ -84,6 +84,28 @@ export const products: Product[] = [
     SKU: 'PS-ECO-C-12120', Name_TR: 'PS Polimer Duvar Lambiri 11.5 cm (Eco) - Cappucino', Name_EN: 'PS Fluted Wall Panel 11.5 cm (Eco) - Cappucino', Name_AR: 'بديل خشب PS 11.5 سم (Eco) - Cappucino', Category: ProductCategory.PS_FLUTED, Series: ProductSeries.ECO,
     Short_Desc_TR: 'Yansıtıcılı yüzeyi ve sıcak cappuccino tonlarıyla davetkar bir atmosfer.', Short_Desc_EN: 'An inviting atmosphere with its reflective surface and warm cappuccino tones.', Short_Desc_AR: 'جو جذاب بسطحه العاكس ودرجات الكابتشينو الدافئة.',
     Material: Material.PS, Surface_Finish: 'reflective', Width_cm: 11.5, Height_or_Length_cm: 290, Thickness_cm: 0.6, Pack_Size: 22, Stock_Status: StockStatus.IN_STOCK, Slug: createSlug('PS Polimer Duvar Lambiri 11.5 cm (Eco) - Cappucino'), images: ['https://res.cloudinary.com/dsqrdreft/image/upload/v1756297575/ps_fluted_PS-ECO-C-12120_main_01_biz1rh.png', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1756297578/ps_fluted_PS-ECO-C-12120_room_01_qs8w9y.png', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1756297572/ps_fluted_PS-ECO-C-12120_room_02_vdiuoh.jpg']
+  },
+  {
+    SKU: 'PS-ECO-BEIGE-12120', Name_TR: 'PS Polimer Duvar Lambiri 11.5 cm (Eco) - Bej', Name_EN: 'PS Fluted Wall Panel 11.5 cm (Eco) - Beige', Name_AR: 'بديل خشب PS 11.5 سم (Eco) - بيج', Category: ProductCategory.PS_FLUTED, Series: ProductSeries.ECO,
+    Short_Desc_TR: 'Doğal bej tonuyla sade ve şık mekanlar için ekonomik çözüm.', Short_Desc_EN: 'Economical solution for simple and stylish spaces with its natural beige tone.', Short_Desc_AR: 'حل اقتصادي للمساحات البسيطة والأنيقة بلونه البيج الطبيعي.',
+    Material: Material.PS, Surface_Finish: 'uvMat', Width_cm: 11.5, Height_or_Length_cm: 290, Thickness_cm: 0.6, Pack_Size: 22, Stock_Status: StockStatus.IN_STOCK, isNew: true, Slug: createSlug('PS Polimer Duvar Lambiri 11.5 cm (Eco) - Bej'), 
+    images: [
+      'https://res.cloudinary.com/dsqrdreft/image/upload/v1770206897/beige_hozhfd.png',
+      'https://res.cloudinary.com/dsqrdreft/image/upload/v1770207390/Generated_Image_November_22_2025_-_12_52PM_gvauex.png',
+      'https://res.cloudinary.com/dsqrdreft/image/upload/v1770207445/Generated_Image_November_22_2025_-_12_26PM_dde0ut.png',
+      'https://res.cloudinary.com/dsqrdreft/image/upload/v1770207417/Generated_Image_November_22_2025_-_12_36PM_haxhaq.png'
+    ]
+  },
+  {
+    SKU: 'PS-ECO-LW-12120', Name_TR: 'PS Polimer Duvar Lambiri 11.5 cm (Eco) - Açık Ahşap', Name_EN: 'PS Fluted Wall Panel 11.5 cm (Eco) - Light Wood', Name_AR: 'بديل خشب PS 11.5 سم (Eco) - خشب فاتح', Category: ProductCategory.PS_FLUTED, Series: ProductSeries.ECO,
+    Short_Desc_TR: 'Ferah alanlar için doğal açık ahşap dokulu ekonomik seri.', Short_Desc_EN: 'Economy series with natural light wood texture for spacious areas.', Short_Desc_AR: 'سلسلة اقتصادية بملمس خشب فاتح طبيعي للمساحات الواسعة.',
+    Material: Material.PS, Surface_Finish: 'woodLook', Width_cm: 11.5, Height_or_Length_cm: 290, Thickness_cm: 0.6, Pack_Size: 22, Stock_Status: StockStatus.IN_STOCK, isNew: true, Slug: createSlug('PS Polimer Duvar Lambiri 11.5 cm (Eco) - Açık Ahşap'), 
+    images: [
+      'https://res.cloudinary.com/dsqrdreft/image/upload/v1770206887/light_wood_jhpiog.png',
+      'https://res.cloudinary.com/dsqrdreft/image/upload/v1770207479/Generated_Image_November_22_2025_-_11_58AM_ewmpcw.png',
+      'https://res.cloudinary.com/dsqrdreft/image/upload/v1770207506/Generated_Image_November_22_2025_-_11_57AM_fcazld.png',
+      'https://res.cloudinary.com/dsqrdreft/image/upload/v1770207542/Generated_Image_November_22_2025_-_11_53AM_ma2nna.png'
+    ]
   },
 
   // B) PVC UV Kaplamalı Mermer Levhalar
@@ -126,22 +148,22 @@ export const products: Product[] = [
     Material: Material.PVC, Surface_Finish: 'glossy', Width_cm: 122, Height_or_Length_cm: 244, Thickness_mm: 0.3, Stock_Status: StockStatus.IN_STOCK, Slug: createSlug('Onyx UV Mermer Levha'), images: ['https://res.cloudinary.com/dsqrdreft/image/upload/v1756297602/pvc_uv_marble_PVC-ONYX-244x122_main_01_xolptr.png', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1756297608/pvc_uv_marble_PVC-ONYX-244x122_room_01_g43xdw.png', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1756297602/pvc_uv_marble_PVC-ONYX-244x122_room_02_jczffk.png']
   },
   {
-    SKU: 'PVC-PARMA-244x122', Name_TR: 'Parma UV Mermer Levha', Name_EN: 'PVC UV Marble Sheet - Parma', Name_AR: 'بديل رخام PVC UV – Parma', Category: ProductCategory.PVC_UV_MARBLE,
+    SKU: 'PVC-PARMA-244x122', Name_TR: 'Parma UV Mermer Levha', Name_EN: 'Parma UV Marble Sheet - Parma', Name_AR: 'بديل رخام PVC UV – Parma', Category: ProductCategory.PVC_UV_MARBLE,
     Short_Desc_TR: 'Parlak yüzeyli, yüksek kaliteli Parma desenli mermer levha.', Short_Desc_EN: 'High-quality Parma patterned marble sheet with a glossy surface.', Short_Desc_AR: 'لوح رخام عالي الجودة بنمط بارما وسطح لامع.',
     Material: Material.PVC, Surface_Finish: 'glossy', Width_cm: 122, Height_or_Length_cm: 244, Thickness_mm: 0.3, Stock_Status: StockStatus.OUT_OF_STOCK, Slug: createSlug('Parma UV Mermer Levha'), images: ['https://res.cloudinary.com/dsqrdreft/image/upload/v1756297605/pvc_uv_marble_PVC-PARMA-244x122_main_01_s7aoxc.png', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1756297609/pvc_uv_marble_PVC-PARMA-244x122_room_01_cyjjh5.png', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1756297609/pvc_uv_marble_PVC-PARMA-244x122_room_02_x16qay.png']
   },
   {
-    SKU: 'PVC-TARANTO-244x122', Name_TR: 'Taranto UV Mermer Levha', Name_EN: 'PVC UV Marble Sheet - Taranto', Name_AR: 'بديل رخام PVC UV – Taranto', Category: ProductCategory.PVC_UV_MARBLE,
+    SKU: 'PVC-TARANTO-244x122', Name_TR: 'Taranto UV Mermer Levha', Name_EN: 'Taranto PVC UV Marble Sheet - Taranto', Name_AR: 'بديل رخام PVC UV – Taranto', Category: ProductCategory.PVC_UV_MARBLE,
     Short_Desc_TR: 'Zarif Taranto deseniyle mekanlarınıza lüks bir dokunuş katın.', Short_Desc_EN: 'Add a touch of luxury to your spaces with the elegant Taranto pattern.', Short_Desc_AR: 'أضف لمسة من الفخامة إلى مساحاتك بنمط تارانتو الأنيق.',
     Material: Material.PVC, Surface_Finish: 'glossy', Width_cm: 122, Height_or_Length_cm: 244, Thickness_mm: 0.3, Stock_Status: StockStatus.OUT_OF_STOCK, Slug: createSlug('Taranto UV Mermer Levha'), images: ['https://res.cloudinary.com/dsqrdreft/image/upload/v1756297610/pvc_uv_marble_PVC-TARANTO-244x122_main_01_j97jef.png', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1756297613/pvc_uv_marble_PVC-TARANTO-244x122_room_01_s2moei.png']
   },
   {
-    SKU: 'PVC-PORTOFINO-244x122', Name_TR: 'Portofino UV Mermer Levha', Name_EN: 'PVC UV Marble Sheet - Portofino', Name_AR: 'بديل رخام PVC UV – Portofino', Category: ProductCategory.PVC_UV_MARBLE,
+    SKU: 'PVC-PORTOFINO-244x122', Name_TR: 'Portofino UV Mermer Levha', Name_EN: 'Portofino PVC UV Marble Sheet - Portofino', Name_AR: 'بديل رخام PVC UV – Portofino', Category: ProductCategory.PVC_UV_MARBLE,
     Short_Desc_TR: 'Portofino mermerinin doğal ve zarif damarlarıyla estetik bir seçim.', Short_Desc_EN: 'An aesthetic choice with the natural and elegant veins of Portofino marble.', Short_Desc_AR: 'خيار جمالي مع عروق رخام بورتوفينو الطبيعية والأنيقة.',
     Material: Material.PVC, Surface_Finish: 'glossy', Width_cm: 122, Height_or_Length_cm: 244, Thickness_mm: 0.3, Stock_Status: StockStatus.OUT_OF_STOCK, Slug: createSlug('Portofino UV Mermer Levha'), images: ['https://res.cloudinary.com/dsqrdreft/image/upload/v1756297606/pvc_uv_marble_PVC-PORTOFINO-244x122_main_01_egkcbb.png', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1756297612/pvc_uv_marble_PVC-PORTOFINO-244x122_room_02_eb8zkv.png', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1756297613/pvc_uv_marble_PVC-PORTOFINO-244x122_room_01_roblwm.png']
   },
   {
-    SKU: 'PVC-FLORENCE-244x122', Name_TR: 'Florence UV Mermer Levha', Name_EN: 'PVC UV Marble Sheet - Florence', Name_AR: 'بديل رخام PVC UV – Florence', Category: ProductCategory.PVC_UV_MARBLE,
+    SKU: 'PVC-FLORENCE-244x122', Name_TR: 'Florence UV Mermer Levha', Name_EN: 'Florence PVC UV Marble Sheet - Florence', Name_AR: 'بديل رخام PVC UV – Florence', Category: ProductCategory.PVC_UV_MARBLE,
     Short_Desc_TR: 'Florence desenli levha ile klasik İtalyan mermer şıklığı.', Short_Desc_EN: 'Classic Italian marble elegance with the Florence patterned sheet.', Short_Desc_AR: 'أناقة الرخام الإيطالي الكلاسيكي مع لوح فلورنسا المنقوش.',
     Material: Material.PVC, Surface_Finish: 'glossy', Width_cm: 122, Height_or_Length_cm: 244, Thickness_mm: 0.3, Stock_Status: StockStatus.OUT_OF_STOCK, Slug: createSlug('Florence UV Mermer Levha'), images: ['https://res.cloudinary.com/dsqrdreft/image/upload/v1756297600/pvc_uv_marble_PVC-FLORENCE-244x122_main_01_s3jzzq.png', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1756297600/pvc_uv_marble_PVC-FLORENCE-244x122_room_01_jtisku.jpg', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1756297601/pvc_uv_marble_PVC-FLORENCE-244x122_room_02_v1cqg9.jpg', 'https://res.cloudinary.com/dsqrdreft/image/upload/v1756297601/pvc_uv_marble_PVC-FLORENCE-244x122_room_03_mnmioe.jpg']
   },

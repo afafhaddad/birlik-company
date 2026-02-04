@@ -9,7 +9,7 @@ export const COMPANY_INFO = {
   email: 'info@birlik-insaat.com',
   address: 'Akdeniz Mah. 39716 Sk. Özgül 2 Apt. No: 10/1A, Mezitli, Mersin, Türkiye',
   workingHours: 'Pazartesi - Cuma: 09:00 - 18:00',
-  mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3198.240316489345!2d34.5368583156209!3d36.7169439799653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15278a5b2f2f2f2f%3A0x1c1c1c1c1c1c1c1c!2sAkdeniz%2C%2039716.%20Sk.%20No%3A10%2C%2033340%20Mezitli%2FMersin%2C%20Turkey!5e0!3m2!1sen!2sus!4v1622038311933!5m2!1sen!2sus', // Example embed URL
+  mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3198.240316489345!2d34.5368583156209!3d36.7169439799653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15278a5b2f2f2f2f%3A0x1c1c1c1c1c1c1c1c!2sAkdeniz%2C%2039716.%20Sk.%20No%3A10%2C%2033340%20Mezitli%2FMersin%2C%20Turkey!5e0!3m2!1sen!2sus!4v1622038311933!5m2!1sen!2sus',
   instagramUrl: 'https://www.instagram.com/birlik.company_/',
   facebookUrl: 'https://www.facebook.com/p/Birlik-company-61560270204237/',
   linkedinUrl: 'https://www.linkedin.com/company/birlik-company/',
@@ -55,7 +55,10 @@ export const translations = {
     searchProducts: 'Ürünleri ara...',
     soldOut: 'Tükendi',
     newLabel: 'YENİ',
-    // Contact Page
+    globalPresence: 'Birlik Küresel Varlık',
+    currentOpenBranches: 'MEVCUT ŞUBELERİMİZ',
+    headquarters: 'Merkez Ofis',
+    regionalHub: 'Bölgesel Merkez',
     getInTouch: 'İletişime Geçin',
     contactIntro: 'Sorularınız, işbirliği teklifleriniz veya ürünlerimiz hakkında daha fazla bilgi için bize ulaşmaktan çekinmeyin.',
     yourName: 'Adınız',
@@ -71,7 +74,6 @@ export const translations = {
     bookConsultationSubtitle: 'Uzmanlarımız projeniz için en iyi ürünleri seçmenize yardımcı olmaya hazır. Hızlı bir görüşme için WhatsApp\'tan bize ulaşın.',
     contactOnWhatsApp: 'WhatsApp\'tan İletişime Geç',
     whatsappConsultationMessage: 'Merhaba, ürünlerinizle ilgili bir danışmanlık randevusu almak istiyorum.',
-    // Polymer Features
     polymerProductFeatures: 'Polimer Ürün Özellikleri',
     polymerProductFeatures_subtitle: 'Ürünlerimizi endüstri lideri yapan temel özelliklerini keşfedin. Dayanıklılık, estetik ve kullanım kolaylığı için tasarlandı.',
     feature_polymer_formula_title: 'POLİMER FORMÜL',
@@ -94,14 +96,12 @@ export const translations = {
     feature_impact_resistant_desc: 'Sert dış yüzeyi ve esnek yapısı ile darbelere karşı dayanıklıdır.',
     feature_recyclable_title: 'GERİ DÖNÜŞTÜRÜLEBİLİR',
     feature_recyclable_desc: 'Kullanım ömrü bittiğinde yeni ürünler yapmak için geri dönüştürülebilir.',
-    // Surface Finishes
     uvMat: 'UV MAT',
     reflective: 'Yansıtıcı',
     woodLook: 'Ahşap Görünüm',
     glossy: 'Parlak',
     matteWhite: 'Mat Beyaz',
     paintable: 'Boyanabilir',
-    // Calculator
     calculatorIntro: 'Tek bir alan için hızlı hesaplayıcılarımızı kullanın veya birden fazla duvar ve ürün için plan yapmak üzere Proje Hesaplayıcı\'ya gidin.',
     productCalculators: 'Hızlı Miktar Hesaplayıcıları',
     projectCalculatorTitle: 'Proje Hesaplayıcı',
@@ -125,14 +125,12 @@ export const translations = {
     frameHeight: 'Çerçeve Yüksekliği (cm)',
     whatsappProjectQuoteIntro: 'Merhaba, proje hesaplayıcımdan çıkan aşağıdaki ürünler için bir teklif almak istiyorum:',
     getProjectQuoteOnWhatsApp: 'Proje Teklifi Al (WhatsApp)',
-    // Outputs
     requiredPieces: 'Gereken Parça Sayısı',
     offcutPerPiece: 'Parça Başına Artan',
     totalOffcut: 'Toplam Artan Uzunluk',
     requiredSheets: 'Gereken Levha Sayısı',
     totalWaste: 'Toplam Fire',
     totalPerimeter: 'Toplam Çevre Uzunluğu',
-    // Notes & Warnings
     heightWarning: 'Duvar yüksekliği panel uzunluğundan fazla. Lütfen eklemeler için plan yapın.',
     baseboardTip: 'İpucu: Artan parçaları başka bir duvarın başlangıcında kullanarak fireyi azaltabilirsiniz.',
     moldingNote: 'Not: Bu hesaplama, belirtilen ölçülerde bir çerçeve için gereken toplam çıta uzunluğunu baz alır.',
@@ -177,7 +175,10 @@ export const translations = {
     searchProducts: 'Search products...',
     soldOut: 'Sold Out',
     newLabel: 'NEW',
-    // Contact Page
+    globalPresence: 'Birlik Global Presence',
+    currentOpenBranches: 'CURRENT OPEN BRANCHES',
+    headquarters: 'Headquarters',
+    regionalHub: 'Regional Hub',
     getInTouch: 'Get In Touch',
     contactIntro: 'Feel free to contact us for your questions, collaboration proposals or for more information about our products.',
     yourName: 'Your Name',
@@ -193,7 +194,6 @@ export const translations = {
     bookConsultationSubtitle: 'Our experts are ready to help you choose the best products for your project. Contact us on WhatsApp for a quick chat.',
     contactOnWhatsApp: 'Contact on WhatsApp',
     whatsappConsultationMessage: 'Hello, I would like to book a consultation regarding your products.',
-    // Polymer Features
     polymerProductFeatures: 'Polymer Product Features',
     polymerProductFeatures_subtitle: 'Discover the core features that make our products industry leaders. Designed for durability, aesthetics, and ease of use.',
     feature_polymer_formula_title: 'POLYMER FORMULA',
@@ -216,14 +216,12 @@ export const translations = {
     feature_impact_resistant_desc: 'It absorbs impact with its hard outer surface and flexible structure.',
     feature_recyclable_title: 'RECYCLABLE',
     feature_recyclable_desc: 'Once its lifespan is over, it can be processed to make new products.',
-    // Surface Finishes
     uvMat: 'UV MAT',
     reflective: 'Reflective',
     woodLook: 'Wood Look',
     glossy: 'Glossy',
     matteWhite: 'Matte White',
     paintable: 'Paintable',
-    // Calculator
     calculatorIntro: 'Use our quick calculators for a single area, or scroll down to the Project Calculator to plan for multiple walls and products.',
     productCalculators: 'Quick Quantity Calculators',
     projectCalculatorTitle: 'Project Calculator',
@@ -247,14 +245,12 @@ export const translations = {
     frameHeight: 'Frame Height (cm)',
     whatsappProjectQuoteIntro: 'Hello, I would like to get a quote for the following items from my project calculation:',
     getProjectQuoteOnWhatsApp: 'Get Project Quote (WhatsApp)',
-    // Outputs
     requiredPieces: 'Required Pieces',
     offcutPerPiece: 'Offcut per Piece',
     totalOffcut: 'Total Offcut Length',
     requiredSheets: 'Required Sheets',
     totalWaste: 'Total Waste',
     totalPerimeter: 'Total Perimeter Length',
-    // Notes & Warnings
     heightWarning: 'Wall height exceeds panel length. Please plan for joints.',
     baseboardTip: 'Tip: You can reduce waste by using the offcut from one wall to start the next.',
     moldingNote: 'Note: This calculation is based on the total molding length required for one frame of the specified dimensions.',
@@ -299,7 +295,10 @@ export const translations = {
     searchProducts: 'ابحث عن المنتجات...',
     soldOut: 'نفدت الكمية',
     newLabel: 'جديد',
-    // Contact Page
+    globalPresence: 'بيرليك التواجد العالمي',
+    currentOpenBranches: 'الفروع المفتوحة حالياً',
+    headquarters: 'المقر الرئيسي',
+    regionalHub: 'مركز إقليمي',
     getInTouch: 'ابقى على تواصل',
     contactIntro: 'لا تتردد في الاتصال بنا لطرح أسئلتك أو مقترحات التعاون أو لمزيد من المعلومات حول منتجاتنا.',
     yourName: 'اسمك',
@@ -315,7 +314,6 @@ export const translations = {
     bookConsultationSubtitle: 'خبراؤنا مستعدون لمساعدتك في اختيار أفضل المنتجات لمشروعك. تواصل معنا عبر واتساب لمحادثة سريعة.',
     contactOnWhatsApp: 'تواصل عبر واتساب',
     whatsappConsultationMessage: 'مرحباً، أود حجز استشارة بخصوص منتجاتكم.',
-    // Polymer Features
     polymerProductFeatures: 'ميزات منتجات البوليمر',
     polymerProductFeatures_subtitle: 'اكتشف الميزات الأساسية التي تجعل منتجاتنا رائدة في الصناعة. مصممة للمتانة والجمال وسهولة الاستخدام.',
     feature_polymer_formula_title: 'تركيبة البوليمر',
@@ -338,14 +336,12 @@ export const translations = {
     feature_impact_resistant_desc: 'يمتص الصدمات بسطحه الخارجي الصلب وهيكله المرن.',
     feature_recyclable_title: 'قابل لإعادة التدوير',
     feature_recyclable_desc: 'عندما ينتهي عمره الافتراضي، يمكن معالجته لصنع منتجات جديدة.',
-    // Surface Finishes
     uvMat: 'UV MAT',
     reflective: 'عاكس',
     woodLook: 'مظهر خشبي',
     glossy: 'لامع',
     matteWhite: 'أبيض مطفي',
     paintable: 'قابل للدهن',
-    // Calculator
     calculatorIntro: 'استخدم حاسباتنا السريعة لمنطقة واحدة، أو انتقل إلى حاسبة المشروع للتخطيط لجدران ومنتجات متعددة.',
     productCalculators: 'حاسبات الكمية السريعة',
     projectCalculatorTitle: 'حاسبة المشروع',
@@ -369,14 +365,12 @@ export const translations = {
     frameHeight: 'ارتفاع الإطار (سم)',
     whatsappProjectQuoteIntro: 'مرحباً، أود الحصول على عرض أسعار للمنتجات التالية من حاسبة المشروع الخاصة بي:',
     getProjectQuoteOnWhatsApp: 'احصل على عرض أسعار المشروع (واتساب)',
-    // Outputs
     requiredPieces: 'القطع المطلوبة',
     offcutPerPiece: 'القصاصة لكل قطعة',
     totalOffcut: 'إجمالي طول القصاصات',
     requiredSheets: 'الألواح المطلوبة',
     totalWaste: 'إجمالي الهدر',
     totalPerimeter: 'إجمالي طول المحيط',
-    // Notes & Warnings
     heightWarning: 'ارتفاع الجدار يتجاوز طول اللوح. يرجى التخطيط للوصلات.',
     baseboardTip: 'نصيحة: يمكنك تقليل الهدر باستخدام قصاصة من جدار لبدء الجدار التالي.',
     moldingNote: 'ملاحظة: يعتمد هذا الحساب على إجمالي طول الإطار المطلوب لإطار واحد بالأبعاد المحددة.',
